@@ -32,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/prductlist', [App\Http\Controllers\admin\ProductController::class, 'index']);
 
 Route::get('/addprduct', [App\Http\Controllers\admin\ProductController::class, 'create']);
-Route::post('/storePrduct', [App\Http\Controllers\admin\ProductController::class, 'addproduct']);
+Route::post('/storePrduct', [App\Http\Controllers\admin\ProductController::class, 'store']);
 Route::delete('/destroyProduct/{id}', [App\Http\Controllers\admin\ProductController::class, 'destroyProduct']);
 
 // Route::get('/prductlist', [App\Http\Controllers\admin\ProductController::class, 'show']);

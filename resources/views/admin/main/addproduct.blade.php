@@ -39,28 +39,29 @@
 
             <div class="col-3 col-md col-sm-12 check-box">
                 <h3 class="h5 text-gray-800 ">Salect Distribution</h3>
-                @foreach ($distributer as $distributers)
+                @foreach ($distributers as $distributer)
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ $distributers->name }}</label>
+                    <input class="form-check-input" type="checkbox" id="distributer_id" name="distributer_id" >
+                    <label class="form-check-label" for="distributer_id" > {{ $distributer->name }}</label>
                 </div>
                 @endforeach
             </div>
 
             <div class="col-4 col-md col-sm-12 check-box">
-                <h3 class="h5  text-gray-800">Salect Categories/Sub-Categories</h3>
+                <h3 class="h5  text-gray-800">Salect Categories</h3>
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwosweet" aria-expanded="true" aria-controls="collapseTwosweet">
                         <span>SWEETS</span>
                     </a>
                     <div id="collapseTwosweet" class="collapse inner-collap" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2  rounded">
-                            @foreach ($category as $categorys)
-                            <div class="form-check form-switch collapse-inner">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">{{ $categorys->name }}</label>
-                            </div>
+                        <div class="col">
+                            <select id="category_id" name="category_id" class="select2 form-control">
+                            @foreach($category as $categorys)
+                              <option value="{{$categorys->id}}">{{$categorys->name}}</option>
+        
                             @endforeach
+        
+                            </select>
                         </div>
                     </div>
                 </li>
@@ -88,7 +89,7 @@
 
             </div>
 
-            <div class="col-3 col-md col-sm-12 check-box">
+            {{-- <div class="col-3 col-md col-sm-12 check-box">
                 <h3 class="h5  text-gray-800">Kosher Status</h3>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -102,7 +103,7 @@
                         NOT KOSHER
                     </label>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
     </div>
@@ -173,7 +174,7 @@
             </div>
             <div class="col-5">
                 <h3 class="h4 mb-4 text-gray-800">File Upload</h3>
-                    <input  type="file" name="image[]" accept="image/*" id="image[]" name="filename">
+                    <input  type="file" name="image[]" accept="image/*" id="image[]" name="filename[]">
             </div>
 
         </div>

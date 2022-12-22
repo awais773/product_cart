@@ -84,7 +84,7 @@
                                             <td>{{$product->distributer?->name }}</td>
                                             <td>{{$product->barcode  }}</td>
                                             <td>{{$product->manufacturer  }}</td>
-                                            <td>{{$product->category->name  }}</td>
+                                            <td>{{$product->category?->name  }}</td>
                                             <td style="display: flex">
                                                 <button type="button" class="btn btn-success"><i
                                                         class="fas fa-edit"></i></button>

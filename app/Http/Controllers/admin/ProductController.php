@@ -33,20 +33,14 @@ class ProductController extends Controller
 
     public function create(Request $req)
     {
-        $distributer = Distributer::all();
+        $distributers = Distributer::all();
         $category = Category::all();
-        return view('admin.main.addproduct',compact('distributer','category'));
+        return view('admin.main.addproduct',compact('distributers','category'));
     }
     
     public function store(Request $req)
     {
-        $validator = Validator::make($req->all(), [
-            //   'name' => 'required',
-            //  'email' => 'required',
-            // 'contact_person' => 'required',
-            //  'contact_number' => 'required',
-        ]);
-
+       
         $rating = new Product();
         $rating->product_name = $req->product_name;
         $rating->store_name = $req->store_name;
@@ -85,7 +79,7 @@ class ProductController extends Controller
             }
         }
 
-           return view('admin.main.addproduct');
+           return redirect()->back()->with('sucess','Product Create Sucessfull');
 
     }
 
