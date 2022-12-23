@@ -101,12 +101,16 @@ class AuthenticateController extends Controller
         $checkEmail = User::where('email', $user)->first();
         if ($checkEmail) {
             $otp = rand(100000, 999999);
-            // $checkEmail->otp_number=$otp;
-            // $checkEmail->update();
+            $checkEmail->otp_number=$otp;
+            $checkEmail->update();
             Mail::to($request->email)->send(new OtpVerificationMail($otp));
             $token = $checkEmail->createToken('assessment')->accessToken;
             $this->$checkEmail['token'] = 'Bearer ' . $token;
-            return response()->json(['success' => 'true', 'message' => 'Otp sent successfully. Please check your email!', 'token' => $token]);
+            return response()->json(['success' => 'true', 'message' => 'Otp sent successfully. Please check your email!', 
+            'data'=> $data= ([
+                'token' => $token
+                ])
+            ]);
         } else {
             return response()->json(['success' => false, 'message' => 'this email is not exits']);
         }

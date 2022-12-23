@@ -31,6 +31,8 @@ Route::post('storeLocation', [App\Http\Controllers\api\ProductController::class,
 Route::post('/storeImage', [App\Http\Controllers\api\ProductController::class, 'storeimage']);
 Route::post('/complainStore', [App\Http\Controllers\api\ProductController::class, 'complainStore']);
 Route::get('/barCode', [App\Http\Controllers\api\ProductController::class, 'barcode']);
+Route::get('/UpdateProductApi', [App\Http\Controllers\api\ProductController::class, 'UpdateProductApi']);
+
 
 Route::apiResource('advertisement', App\Http\Controllers\api\AdvertisementController::class);
 Route::apiResource('contact', App\Http\Controllers\api\ContactController ::class);

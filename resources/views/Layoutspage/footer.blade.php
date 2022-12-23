@@ -116,6 +116,15 @@ $(document).ready(function() {
     });
 });
 </script>
+<script src="{{ asset('import/assets/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('import/assets/js/jquery.easing.min.js') }}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('import/assets/js/sb-admin-2.min.js') }}"></script>
+<!-- Page level plugins -->
+<script src="{{ asset('import/assets/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('import/assets/js/datatables-demo.js') }}"></script>
+<script src="{{ asset('import/assets/js/Chart.min.js') }}"></script>
 
 
 </body>

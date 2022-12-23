@@ -20,4 +20,8 @@ class Faviourt extends Model
     public function user() {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
+
+    public function productImage() {
+        return $this->hasMany(ProductImage::class, 'product_id', 'id');  
+    }
 }

@@ -94,4 +94,9 @@ $.ajax({
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js
     ">
+    <link href="{{ asset('import/assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('import/assets/css/customstyle.css') }}" rel="stylesheet">
+    <link href="{{ asset('import/assets/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('import/assets/js/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('import/assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>

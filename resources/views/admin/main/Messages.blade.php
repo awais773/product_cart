@@ -14,7 +14,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-sm-12 col-md-6">
                                 <div class="dataTables_length" id="dataTable_length"><label class="label-top">Show
                                         <select name="dataTable_length" aria-controls="dataTable"
@@ -30,7 +30,7 @@
                                             class="form-control form-control-sm" placeholder=""
                                             aria-controls="dataTable"></label></div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-bordered dataTable" id="dataTable" width="100%"
@@ -82,7 +82,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-sm-12 col-md-5">
                                 <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
                                     Showing 1 to 10 of 57 entries</div>
@@ -117,7 +117,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <button class="btn btn-secondary float-right export-btn"
                         onclick="exportTableToExcel('dataTable' , 'members-data');"> Export Data</button>

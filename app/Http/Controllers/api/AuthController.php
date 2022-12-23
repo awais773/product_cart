@@ -37,11 +37,16 @@ class AuthController extends Controller
         ]);
        $token = $user->createToken('Token')->accessToken;
        if (!$user) {
-        return response()->json([ 'success'=>'Falls', 'message'=>'somthin Wrong',], 422);
+        return response()->json([ 'success'=>false, 'message'=>'somthin Wrong',], 422);
       }
       return response()->json([ 'success'=>'True',
       'message'=>'register successfull',
-      'token'=>$token,'user'=>$user], 200);
+      'data'=>$data=([
+        'token'=>$token,
+        'user'=>$user
+      ])
+    
+    ], 200);
 
     //    return response()->json([
     //     'success'=>'True',
@@ -62,13 +67,16 @@ class AuthController extends Controller
              return response()->json([
                 'success'=>'True',
                 'message'=>'login successfull',
-              'user'=> User::find(Auth::id()),
-                'token'=>$token,
+                'data'=>$data = ([
+                  'user'=> User::find(Auth::id()),
+                  'token'=>$token,
+                ])
+              
                  ],200);
           } 
           else{
             return response()->json([
-                'success'=>'Falls',
+                'success'=>false,
                 'message'=>'please register'],401);
           }
     }

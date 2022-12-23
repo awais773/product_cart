@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use App\Mail\InvitationMail;
-use App\Models\Invitation;
 use App\Models\User;
+use App\Models\Invitation;
+use App\Models\Api\Product;
+use App\Mail\InvitationMail;
+use App\Models\Api\Complain;
 use Illuminate\Http\Request;
+use App\Models\Api\Distributer;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,7 +25,13 @@ class EmailInvitationController extends Controller
      */
     public function index()
     {
-        return view('admin.main.indexs');
+        
+        $product = Product::all()->count();
+        $user = User::all()->count();
+        $complain = Complain::all()->count();
+        $distributer = Distributer::all()->count();
+        
+        return view('admin.main.indexs',compact('product','user','complain','distributer'));
     }
 
     /**

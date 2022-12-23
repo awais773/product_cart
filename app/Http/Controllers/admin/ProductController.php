@@ -6,11 +6,12 @@ use App\Models\User;
 use App\Models\Invitation;
 use App\Models\Api\Product;
 use App\Mail\InvitationMail;
+use App\Models\Api\Category;
+use App\Models\Api\Complain;
 use Illuminate\Http\Request;
+use App\Models\Api\Distributer;
 use App\Models\Api\ProductImage;
 use App\Http\Controllers\Controller;
-use App\Models\Api\Category;
-use App\Models\Api\Distributer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +28,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('distributer','productImage','category')->get();
+        $products = Product::with('distributers','productImage','categorys')->get();
         return view('admin.main.productlist',compact('products'));
     }
 
@@ -40,7 +41,7 @@ class ProductController extends Controller
     
     public function store(Request $req)
     {
-       
+       dd($req);
         $rating = new Product();
         $rating->product_name = $req->product_name;
         $rating->store_name = $req->store_name;
@@ -59,6 +60,11 @@ class ProductController extends Controller
         $rating->germany_name = $req->germany_name;
         $rating->hebrew_name = $req->hebrew_name;
         $rating->status = $req->status;
+        $rating->ingredients_english = $req->ingredients_english;
+        $rating->ingredients_germany = $req->ingredients_germany;
+        $rating->ingredients_hebrew = $req->ingredients_hebrew;
+        $rating->note_germany = $req->note_germany;
+        $rating->note_hebrew = $req->note_hebrew;
         $rating->save();
 
 

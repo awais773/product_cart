@@ -58,7 +58,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-sm-12 col-md-5">
                                 <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
                                     Showing 1 to 10 of 57 entries</div>
@@ -93,7 +93,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <button class="btn btn-secondary float-right export-btn"
                         onclick="exportTableToExcel('dataTable' , 'members-data');"> Export Data</button>

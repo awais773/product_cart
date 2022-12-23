@@ -17,7 +17,7 @@ class SuggestionController extends Controller
    
     public function index()
     {
-        $suggestions = Product::with('user','distributer','productImage')->get();
+        $suggestions = Product::with('users','distributers','productImage')->get();
         return view('admin.main.suggestion',compact('suggestions'));
     }
 

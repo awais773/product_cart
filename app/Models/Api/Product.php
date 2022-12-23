@@ -28,7 +28,16 @@ class Product extends Model
         'status',
         'germany_name',
         'hebrew',
-        'faviourt_count'
+        'faviourt_count',
+        'update_product',
+        'note_germany',
+        'note_hebrew',
+        'ingredients_english',
+        'ingredients_germany',
+        'ingredients_hebrew',
+       
+
+
 
     ];
 
@@ -42,14 +51,14 @@ class Product extends Model
     // ];
 
     public function category() {
-        return $this->hasOne('App\Models\Api\Category', 'id', 'category_id');
+        return $this->hasMany('App\Models\Api\Category', 'id', 'category_id');
     }
     public function distributer() {
-        return $this->hasOne('App\Models\Api\Distributer', 'id', 'distributer_id');
+        return $this->hasMany('App\Models\Api\Distributer', 'id', 'distributer_id');
     }
 
     public function user() {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->hasMany('App\Models\User', 'id', 'user_id');
     }
 
     public function fviourtUser() {
@@ -65,7 +74,14 @@ class Product extends Model
       }
 
 
-    //   public function productImages() {
-    //     return $this->hasMany('App\Models\Api\ProductImage', 'product_id', 'id');
-    // }
+      public function categorys() {
+        return $this->hasOne('App\Models\Api\Category', 'id', 'category_id');
+    }
+    public function distributers() {
+        return $this->hasOne('App\Models\Api\Distributer', 'id', 'distributer_id');
+    }
+
+    public function users() {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

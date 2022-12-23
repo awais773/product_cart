@@ -56,6 +56,7 @@
                     <div id="collapseTwosweet" class="collapse inner-collap" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="col">
                             <select id="category_id" name="category_id" class="select2 form-control">
+                                <option>Choose One..</option>
                             @foreach($category as $categorys)
                               <option value="{{$categorys->id}}">{{$categorys->name}}</option>
         
@@ -89,21 +90,18 @@
 
             </div>
 
-            {{-- <div class="col-3 col-md col-sm-12 check-box">
-                <h3 class="h5  text-gray-800">Kosher Status</h3>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        KOSHER
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        NOT KOSHER
-                    </label>
-                </div>
-            </div> --}}
+            <div class="col-4">
+                <h3 class="h4 mb-4 text-gray-800">kosher Status</h3>
+                <div class="row mb-4">
+                    <div class="col">
+                        <select id="kosher_status" name="kosher_status"  class="select2 form-control">
+                            <option>Choose One..</option>
+                            <option>Kosher</option>
+                            <option>Not Kosher</option>
+                        </select>
+                    </div>
+                 </div>
+            </div>
         </div>
 
     </div>
@@ -145,19 +143,19 @@
         <div class="row">
             <div class="col-sm">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="English Name">
+                    <input type="text" class="form-control" id="ingredients_english" name="ingredients_english" placeholder="English Name">
                     <small id="emailHelp" class="form-text text-muted"></small>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="German Name">
+                    <input type="text" class="form-control" id="ingredients_germany" name="ingredients_germany" placeholder="German Name">
                     <small id="emailHelp" class="form-text text-muted"></small>
                 </div>
             </div>
             <div class="col-sm">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Hebrew Name">
+                    <input type="text" class="form-control" id="ingredients_hebrew" name="ingredients_hebrew" placeholder="Hebrew Name">
                     <small id="emailHelp" class="form-text text-muted"></small>
                 </div>
             </div>
@@ -174,7 +172,8 @@
             </div>
             <div class="col-5">
                 <h3 class="h4 mb-4 text-gray-800">File Upload</h3>
-                    <input  type="file" name="image[]" accept="image/*" id="image[]" name="filename[]">
+                    <input  type="file" name="image[]" accept="image/*"  id="inputImage"
+                    multiple  name="filename[]">
             </div>
 
         </div>
@@ -196,13 +195,13 @@
             <div class="col-sm">
                 <div class="form-group">
                     <label for="note">German:</label>
-                    <textarea class="form-control" rows="3" id="note" name="note"></textarea>
+                    <textarea class="form-control" rows="3" id="note_germany" name="note_germany"></textarea>
                   </div>
             </div>
             <div class="col-sm">
                 <div class="form-group">
                     <label for="note">Hebrew:</label>
-                    <textarea class="form-control" rows="3" id="note" name="note"></textarea>
+                    <textarea class="form-control" rows="3" id="note_hebrew" name="note_hebrew"></textarea>
                   </div>
             </div>
         </div>

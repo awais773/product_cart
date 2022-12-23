@@ -19,7 +19,7 @@ class Reported_problemsController extends Controller
     public function index()
     {
         $complains=Complain::latest()->with('user','product')->get();
-        return view('admin.main.Reported_problems',compact('complains'));
+        return view('admin.main.reported_problems',compact('complains'));
     }
 
     public function store(Request $req)

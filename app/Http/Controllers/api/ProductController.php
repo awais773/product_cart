@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\User;
 use App\Models\Api\Store;
 use App\Models\Api\Product;
 use App\Models\Api\Complain;
+use App\Models\Api\Faviourt;
 use Illuminate\Http\Request;
+use App\Models\Api\Distributer;
+use App\Models\Api\ProductImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Api\Faviourt;
-use App\Models\Api\ProductImage;
 use Illuminate\Support\Facades\Validator;
 use SebastianBergmann\CodeCoverage\Driver\Selector;
 
@@ -246,5 +248,27 @@ class ProductController extends Controller
     ');
         return response($designers);
     }
+
+
+    public function UpdateProductApi()
+    {
+        $data = Product::latest()->with('category', 'distributer', 'fviourtUser','productImage')->where('update_product', true)->get();
+
+                if (is_null($data)) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'data not found'
+                    ],);
+                }
+                return response()->json([
+                    'success' => 'True',
+                    'message' => 'All Data susccessfull',
+                    'data' => $data,
+        
+                ]);
+            
+           
+    }
+
+
 }
-// 31.516135, 74.343423
