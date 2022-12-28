@@ -14,23 +14,6 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        {{-- <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="dataTables_length" id="dataTable_length"><label class="label-top">Show
-                                        <select name="dataTable_length" aria-controls="dataTable"
-                                            class="custom-select custom-select-sm form-control form-control-sm label-inner">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select> entries</label></div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div id="dataTable_filter" class="dataTables_filter"><label>Search:<input type="search"
-                                            class="form-control form-control-sm" placeholder=""
-                                            aria-controls="dataTable"></label></div>
-                            </div>
-                        </div> --}}
                         <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-bordered dataTable" id="dataTable" width="100%"
@@ -44,10 +27,16 @@
                                                 style="width: 15px;">ID</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 25px;">Image</th>
+                                                style="width: 663px; padding-right: 25px;">Image</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
                                                 style="width: 106.203px;">Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Office: activate to sort column ascending"
+                                                style="width: 106.203px;">Germeny Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Office: activate to sort column ascending"
+                                                style="width: 106.203px;">Hebrew Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Age: activate to sort column ascending"
                                                 style="width: 45.5156px;">Distributers</th>
@@ -81,14 +70,15 @@
                                             
                                             </td>
                                             <td>{{$product->product_name  }}</td>
+                                            <td>{{$product->germany_name  }}</td>
+                                            <td>{{$product->hebrew_name  }}</td>
+
                                             <td>{{$product->distributers?->name }}</td>
                                             <td>{{$product->barcode  }}</td>
                                             <td>{{$product->manufacturer  }}</td>
                                             <td>{{$product->categorys?->name  }}</td>
                                             <td style="display: flex">
-                                                <button type="button" class="btn btn-success"><i
-                                                        class="fas fa-edit"></i></button>
-
+                                             <a class="btn btn-success" href="{{ route('products.edit',$product->id) }}"> <i class="fas fa-edit"></i></a>
                                                  <form method="post" action="{{url('/destroyProduct',$product->id)}}">
                                                       @method('delete')
                                                         @csrf      
@@ -104,42 +94,7 @@
                                 </table>
                             </div>
                         </div>
-                        {{-- <div class="row">
-                            <div class="col-sm-12 col-md-5">
-                                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
-                                    Showing 1 to 10 of 57 entries</div>
-                            </div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                    <ul class="pagination pagination-end">
-                                        <li class="paginate_button page-item previous disabled"
-                                            id="dataTable_previous"><a href="#" aria-controls="dataTable"
-                                                data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                        <li class="paginate_button page-item active"><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="1" tabindex="0"
-                                                class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="2" tabindex="0"
-                                                class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="3" tabindex="0"
-                                                class="page-link">3</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="4" tabindex="0"
-                                                class="page-link">4</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="5" tabindex="0"
-                                                class="page-link">5</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="6" tabindex="0"
-                                                class="page-link">6</a></li>
-                                        <li class="paginate_button page-item next" id="dataTable_next"><a
-                                                href="#" aria-controls="dataTable" data-dt-idx="7"
-                                                tabindex="0" class="page-link">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> --}}
+                        
                     </div>
                     <button class="btn btn-secondary float-right export-btn"
                         onclick="exportTableToExcel('dataTable' , 'members-data');"> Export Data</button>

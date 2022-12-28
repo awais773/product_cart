@@ -4,6 +4,20 @@
 
     <!-- Page Heading -->
     <h1 class="h2 mb-4 text-gray-800">Add Distribution</h1>
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+    {{ session()->get('message') }}
+    </div>
+     @endif
+     @if ($errors->any())
+      <div class="alert alert-danger">
+      <ul>
+       @foreach ($errors->all() as $error)
+           <li>{{ $error }}</li>
+       @endforeach
+    </ul>
+    </div>
+    @endif
     <h3 class="h4 mb-4 text-gray-800">Distributor Name <span class="star">*</span></h3>
     <form action="{{ url('/storedistribution') }}" method="POST"enctype="multipart/form-data">
         @csrf

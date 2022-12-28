@@ -15,14 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MessagesController extends Controller
 {
-    private $success = false;
-    private $message = '';
-
-    /**
-     * This function is used to return email verification view
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
+   
     public function index()
     {
         $contacts =Contact::with('user')->get();
@@ -39,23 +32,5 @@ class MessagesController extends Controller
     } 
 
 
-  
-
-    public function destroy($id)
-    {
-        $program = Product::find($id);
-        if (!empty($program)) {
-            $program->delete();
-            return response()->json([
-                'success' => true,
-                'message' => ' delete successfuly',
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'something wrong try again ',
-            ]);
-        }
-    }
 
 }

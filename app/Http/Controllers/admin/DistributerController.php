@@ -15,14 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class DistributerController extends Controller
 {
-    private $success = false;
-    private $message = '';
-
-    /**
-     * This function is used to return email verification view
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
+    
     public function index()
     {
         return view('admin.main.distributionlist');
@@ -34,16 +27,9 @@ class DistributerController extends Controller
 
     public function store(Request $req)
     {
-        $validator = Validator::make($req->all(), [
-            // 'name' => 'required',
-            //     //  'email' => 'required',
-            //     // 'contact_person' => 'required',
-            //     //  'contact_number' => 'required',
+        $req->validate([
+            'name' => 'required',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors());
-        }
         $rating = new Distributer();
         $rating->name = $req->name;
 
@@ -54,9 +40,8 @@ class DistributerController extends Controller
             $input['image'] = "$profileImage";
             $rating->image=$profileImage;
         }
-
         $rating->save();
-        return view('admin.main.adddistribution');
+        return redirect()->back()->with('message','Distributor Create Sucessfull');
     }
 
 
@@ -68,14 +53,10 @@ class DistributerController extends Controller
         
     }
 
-
-
-
     public function destroyDistributer($id) 
     {
        $user = Distributer::where('id', $id)->firstorfail()->delete();
-       echo ("User Record deleted successfully.");
-       return redirect()->back()->with("delete sucess");
+       return redirect()->back()->with( 'message',"Record deleted successfully");
     }
 
 }

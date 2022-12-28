@@ -11,7 +11,7 @@
                     {{-- {{ Auth::user()->name }} --}}
                 </a>
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -21,8 +21,9 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
-                </div>
+                </div> --}}
             </li>
+            
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/dashboard') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -68,7 +69,7 @@
                         <h6 class="collapse-header">Categories/Prod.Family:</h6>
                         <a class="collapse-item" href="{{ url('/addcategory') }}">Add Categories</a>
                         {{-- <a class="collapse-item" href="{{ url('/subcategory') }}">Sub Categories </a> --}}
-                        <a class="collapse-item" href="{{ url('/listCategory') }}">List Add Categories </a>
+                        <a class="collapse-item" href="{{ url('/listCategory') }}">List Categories </a>
                         {{-- <a class="collapse-item" href="{{ url('/listsubCategory') }}">List Sub Categories </a> --}}
 
 

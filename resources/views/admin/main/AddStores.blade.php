@@ -4,7 +4,21 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h2 mb-4 text-gray-800">Stores</h1>
+        <h1 class="h2 mb-4 text-gray-800">Add Stores</h1>
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+        {{ session()->get('message') }}
+        </div>
+         @endif
+         @if ($errors->any())
+   <div class="alert alert-danger">
+       <ul>
+           @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+           @endforeach
+       </ul>
+   </div>
+ @endif
         <h3 class="h4 mb-4 text-gray-800">Store Name</h3>
 
         <form action="{{ url('/storeAddStores') }}" method="POST"enctype="multipart/form-data">
@@ -29,7 +43,7 @@
             </div>
             <div class="col-6">
                 <h3 class="h4 mb-4 text-gray-800">Longitude</h3>
-                <input type="text" class="form-control" id="long" name="long" placeholder="lat coordinate">
+                <input type="text" class="form-control" id="long" name="long" placeholder="long coordinate">
             </div>
 
         </div>

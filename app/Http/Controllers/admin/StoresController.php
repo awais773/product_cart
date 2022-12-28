@@ -40,11 +40,9 @@ class StoresController extends Controller
 
     public function store(Request $req)
     {
-        $validator = Validator::make($req->all(), [
-            //   'name' => 'required',
-            //  'email' => 'required',
-            // 'contact_person' => 'required',
-            //  'contact_number' => 'required',
+        $req->validate([
+            'lat' => 'required',
+            'long' => 'required',
         ]);
 
 
@@ -53,17 +51,13 @@ class StoresController extends Controller
         $rating->lat = $req->lat;
         $rating->long = $req->long;
         $rating->save();
-        return view('admin.main.AddStores')->with('sucess','Store Create Sucessfull');
+        return redirect()->back()->with('message','Store Create Sucessfull');
     }
     
 
     public function show()
     {
-        // // $program = Product::find($id);
-        // // if (is_null($program)) {
-        // //     return response()->json('Data not found', 404);
-        // // }
-        // return view('admin.main.productlist');
+        
         return view('admin.main.StoresList');
 
     } 
@@ -74,8 +68,7 @@ class StoresController extends Controller
     public function destroyStore($id) 
     {
        $user = Store::where('id', $id)->firstorfail()->delete();
-       echo ("User Record deleted successfully.");
-       return redirect()->back()->with("delete sucess");
+       return redirect()->back()->with('message',"Record deleted successfully");
     }
 
 }

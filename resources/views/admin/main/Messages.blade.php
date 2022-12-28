@@ -70,7 +70,8 @@
                                             <td>{{$contact->reason}}</td>
                                             <td>{{$contact->message}}</td>
                                             <td>
-                                            <img width="100" style="margin-bottom:9px" height="80" src="{{ asset($contact->image) }}" alt="" srcset="">
+                                            <a href="{{$contact['image'] }}" target="_blank" data-id="{{ $contact['id'] }}" download="{{ $contact['id']  }}" class="downloader" ><button  style="background-color: DodgerBlue;color: white;font-size: 15px;">download</button></a>
+
                                                 {{-- <button class="btn"
                                                     style="background-color: DodgerBlue;color: white;font-size: 15px;"><i
                                                         class="fa fa-download"></i> Download</button></td> --}}

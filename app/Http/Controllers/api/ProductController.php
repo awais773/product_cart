@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $data = Product::latest()->with('category', 'distributer', 'fviourtUser','productImage')->get();
+        $data = Product::latest()->with('category', 'distributer', 'fviourtUser','productImage')->where('status','Approved')->get();
 
                 if (is_null($data)) {
                     return response()->json([
@@ -67,7 +67,8 @@ class ProductController extends Controller
         $rating->note = $req->note;
         $rating->germany_name = $req->germany_name;
         $rating->hebrew_name = $req->hebrew_name;
-        $rating->status = '0';
+        $rating->user_id = $req->user_id;
+        $rating->status = 'Pending';
         $rating->save();
 
 
@@ -238,15 +239,22 @@ class ProductController extends Controller
         $max_distance = 20;
         $designers = DB::select('SELECT * FROM
         (SELECT *, (' . $circle_radius . ' * acos(cos(radians(' . $lat . ')) * cos(radians(lat)) *
-        cos(radians(long) - radians(' . $long . ')) +
-        sin(radians(' . $lat . ')) * sin(radians(lat))))
+        cos(radians(`long`) - radians(' . $long . ')) +
+        sin(radians(' . $lat . ')) * sin(radians(`lat`))))
         AS distance
-        FROM  stores) AS distances 
-        
+        FROM stores) AS distances 
         ORDER BY distance;
 
     ');
-        return response($designers);
+       if (is_null($designers)) {
+        return response()->json([ 'success'=>false,
+        'message'=>' Data not found', ]);        
+     } 
+        return response()->json([ 
+         'success'=>'True',
+         'message'=>'All Data susccessfull',
+          'data'=>$designers
+]);
     }
 
 

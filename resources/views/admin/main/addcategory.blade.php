@@ -3,15 +3,23 @@
    <!-- --------Category--------- -->
    <div class="main-sub">
     <div class="container-fluid">
-      @if ($message = Session::get('success'))
-      <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
+      @if(session()->has('message'))
+      <div class="alert alert-success">
+      {{ session()->get('message') }}
+      </div>
+       @endif
+       @if ($errors->any())
+        <div class="alert alert-danger">
+        <ul>
+         @foreach ($errors->all() as $error)
+             <li>{{ $error }}</li>
+         @endforeach
+      </ul>
       </div>
       @endif
         <!-- Page Heading -->
         <h1 class="h2 mb-4 text-gray-800">Add Category</h1>
-        <h3 class="h4 mb-4 text-gray-800">Product Family Name </h3>
+        <h3 class="h4 mb-4 text-gray-800">Product Family Name <span class="star">*</span></h3>
             <form action="{{ url('/storeCategory')}}" method="POST" >
              @csrf
             <div class="row">

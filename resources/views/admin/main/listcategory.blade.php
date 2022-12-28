@@ -6,7 +6,20 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Add Category List</h1>
-
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+        {{ session()->get('message') }}
+        </div>
+         @endif
+         @if ($errors->any())
+   <div class="alert alert-danger">
+       <ul>
+           @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+           @endforeach
+       </ul>
+   </div>
+ @endif
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -72,8 +85,6 @@
                                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                                 </form></td>
                                             </tr>
-
-
                                             </tr>
                                         @endforeach
                                     </tbody>

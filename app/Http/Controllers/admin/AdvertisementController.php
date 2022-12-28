@@ -15,14 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AdvertisementController extends Controller
 {
-    private $success = false;
-    private $message = '';
-
-    /**
-     * This function is used to return email verification view
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
+  
     public function index()
     {
         return view('admin.main.AddAdvertisement');
@@ -63,8 +56,7 @@ class AdvertisementController extends Controller
     public function destroy($id) 
     {
        $user = Advertisement::where('id', $id)->firstorfail()->delete();
-       echo ("User Record deleted successfully.");
-       return redirect()->back()->with("delete sucess");
+       return redirect()->back()->with('message',"Record deleted successfully");
     }
 
 }

@@ -34,7 +34,9 @@ Route::get('/prductlist', [App\Http\Controllers\admin\ProductController::class, 
 Route::get('/addprduct', [App\Http\Controllers\admin\ProductController::class, 'create']);
 Route::post('/storePrduct', [App\Http\Controllers\admin\ProductController::class, 'store']);
 Route::delete('/destroyProduct/{id}', [App\Http\Controllers\admin\ProductController::class, 'destroyProduct']);
+Route::Resource('products', App\Http\Controllers\admin\ProductController::class);
 
+// Route::resource('products', ProductController::class);
 // Route::get('/prductlist', [App\Http\Controllers\admin\ProductController::class, 'show']);
 
 Route::get('/addcategory', [App\Http\Controllers\admin\CategoryController::class, 'create']);
@@ -56,7 +58,13 @@ Route::delete('destroyDistributer/{id}', [App\Http\Controllers\admin\Distributer
 
 
 
+Route::get('/changeStatus', [App\Http\Controllers\admin\SuggestionController::class, 'changeStatus']);
 Route::get('/suggestion', [App\Http\Controllers\admin\SuggestionController::class, 'index']);
+Route::get('/downloadImage', [App\Http\Controllers\admin\SuggestionController::class, 'downloadImage']);
+Route::Resource('suggestions', App\Http\Controllers\admin\SuggestionController::class);
+
+
+
 Route::get('/Reported_problems', [App\Http\Controllers\admin\Reported_problemsController::class, 'index']);
 Route::delete('/destroy/{id}', [App\Http\Controllers\admin\Reported_problemsController::class, 'destroy']);
 
@@ -79,5 +87,8 @@ Route::delete('/destroy/{id}', [App\Http\Controllers\admin\AdvertisementControll
 
 Route::get('/Others', [App\Http\Controllers\admin\OthersController::class, 'store']);
 Route::get('/Users', [App\Http\Controllers\admin\UsersController::class, 'index']);
+
+Route::get('user/approved/service/{id}', [App\Http\Controllers\admin\SuggestionController::class, 'approveservice'])->name('approveservice');
+Route::get('user/disable/service/{id}', [App\Http\Controllers\admin\SuggestionController::class, 'disableservice'])->name('disableservice');
 
 

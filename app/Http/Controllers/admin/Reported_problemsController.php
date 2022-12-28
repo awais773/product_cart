@@ -43,7 +43,7 @@ class Reported_problemsController extends Controller
 
        dd($Complain );
        echo ("User Record deleted successfully.");
-       return redirect()->back()->with("delete sucess");
+       return redirect()->back()->with('message',"Record deleted successfully");
     }
 
 

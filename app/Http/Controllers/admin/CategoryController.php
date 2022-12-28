@@ -33,31 +33,23 @@ class CategoryController extends Controller
     {
         return view('admin.main.addcategory');
     }
-    public function listsubCategory()
-    {
-        return view('admin.main.listsubCategory');
-    }
+
 
 
     public function store(Request $req)
     {
-        $validator = Validator::make($req->all(), [
-            //   'name' => 'required',
-            //  'email' => 'required',
-            // 'contact_person' => 'required',
-            //  'contact_number' => 'required',
+        $req->validate([
+            'name' => 'required',
+            'germany_name' => 'required',
+            'hebrew_name' => 'required',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors());
-        }
 
         $rating = new Category();
         $rating->name = $req->name;
         $rating->germany_name = $req->germany_name;
         $rating->hebrew_name = $req->hebrew_name;
         $rating->save();
-        return view('admin.main.addcategory')->with('success','Category Create sucessfull');
+        return redirect()->back()->with('message','Category Create sucessfull');
     }
     
 
@@ -76,7 +68,7 @@ class CategoryController extends Controller
     {
        $user = Category::where('id', $id)->firstorfail()->delete();
        echo ("User Record deleted successfully.");
-       return redirect()->back()->with("delete sucess");
+       return redirect()->back()->with('message',"Record deleted successfully");
     }
 
 

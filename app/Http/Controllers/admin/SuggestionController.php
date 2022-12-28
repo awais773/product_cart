@@ -7,6 +7,7 @@ use App\Models\Invitation;
 use App\Models\Api\Product;
 use App\Mail\InvitationMail;
 use Illuminate\Http\Request;
+use App\Models\Api\ProductImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -17,41 +18,35 @@ class SuggestionController extends Controller
    
     public function index()
     {
-        $suggestions = Product::with('users','distributers','productImage')->get();
+        $suggestions = Product::with('users','distributers','productImage')->where('status' ,'Pending')->get();
         return view('admin.main.suggestion',compact('suggestions'));
     }
 
    
-   
 
-    public function show()
+    public function changeStatus(Request $request)
     {
-        // // $program = Product::find($id);
-        // // if (is_null($program)) {
-        // //     return response()->json('Data not found', 404);
-        // // }
-        // return view('admin.main.productlist');
-
-    } 
-
-
+        $user = Product::find($request->product_id);
+        $user->status = $request->status;
+        $user->save();
   
+        return response()->json(['success'=>'Status change successfully.']);
+}
 
-    public function destroy($id)
+
+    public function approveservice($id)
     {
-        $program = Product::find($id);
-        if (!empty($program)) {
-            $program->delete();
-            return response()->json([
-                'success' => true,
-                'message' => ' delete successfuly',
-            ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'something wrong try again ',
-            ]);
-        }
+
+        Product::where('id', $id)->update(['status' => 'Approved']);
+
+        return back()->with('message', 'Request has been Approved successfuly');
     }
 
+    public function disableservice($id)
+    {
+        Product::where('id', $id)->update(['status' => 'Disabled']);
+
+        return back()->with('message', 'Request has been disabled ');
+    }
+ 
 }

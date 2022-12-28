@@ -27,7 +27,7 @@ class Product extends Model
         'note',
         'status',
         'germany_name',
-        'hebrew',
+        'hebrew_name',
         'faviourt_count',
         'update_product',
         'note_germany',
@@ -46,9 +46,14 @@ class Product extends Model
         $this->attributes['product_image'] = json_encode($value);
     }
     // protected $casts = [
-    //     "product_image" => "array",
+    //     "distributer_id" => "array",
 
     // ];
+
+    //  public function setCategoryAttribute($value)
+    // {
+    //     $this->attributes['distributer_id'] = json_encode($value);
+    // }
 
     public function category() {
         return $this->hasMany('App\Models\Api\Category', 'id', 'category_id');
