@@ -43,6 +43,7 @@ Route::get('/addcategory', [App\Http\Controllers\admin\CategoryController::class
 Route::post('/storeCategory', [App\Http\Controllers\admin\CategoryController::class, 'store']);
 Route::get('/listCategory', [App\Http\Controllers\admin\CategoryController::class, 'show']);
 Route::delete('/destroyCategory/{id}', [App\Http\Controllers\admin\CategoryController::class, 'destroyCategory']);
+Route::Resource('categories', App\Http\Controllers\admin\CategoryController::class);
 
 
 Route::get('/subcategory', [App\Http\Controllers\admin\SubCategoryController::class, 'create']);
@@ -55,6 +56,8 @@ Route::get('/adddistribution', [App\Http\Controllers\admin\DistributerController
 Route::get('/distributionlist', [App\Http\Controllers\admin\DistributerController::class, 'show']);
 Route::post('/storedistribution', [App\Http\Controllers\admin\DistributerController::class, 'store']);
 Route::delete('destroyDistributer/{id}', [App\Http\Controllers\admin\DistributerController::class, 'destroyDistributer']);
+Route::Resource('distributors
+', App\Http\Controllers\admin\DistributerController::class);
 
 
 

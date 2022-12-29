@@ -24,4 +24,7 @@ class Faviourt extends Model
     public function productImage() {
         return $this->hasMany(ProductImage::class, 'product_id', 'id');  
     }
+    public function fviourtUser() {
+        return $this->hasMany(Faviourt::class, 'product_id', 'id');  
+    }
 }

@@ -15,7 +15,7 @@ class FaviourtController extends Controller
 
     public function index()
     {
-        $data = Faviourt::latest()->with('product.productImage')->get();
+        $data = Faviourt::latest()->with('product.productImage', 'product.fviourtUser',)->get();
         if (is_null($data)) {
             return response()->json([
                 'success' => 'Falls',
@@ -95,7 +95,7 @@ class FaviourtController extends Controller
 
     public function show($id)
     {
-        $program = Faviourt::with( 'product.productImage',)
+        $program = Faviourt::with( 'product.productImage','product.fviourtUser')
             ->whereIn('user_id', [$id])->get();
 
 

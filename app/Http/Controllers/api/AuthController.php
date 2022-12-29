@@ -17,17 +17,15 @@ class AuthController extends Controller
     //
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'name' => ['required', 'string', 'min:4', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users',],
-            'password' => ['required', 'string', 'min:8'],
-            'country' => ['required'],
+      $loginData = $request->return =[
+        'email' => 'email|required|unique:users',
+        'password' => 'required'
+    ];
 
-      ]);
+    if (!auth()->attempt($loginData)) {
+        return response(['message' => 'Invalid Credentials'], 401);
+    }
 
-      if($validator->fails()){
-          return response()->json($validator->errors());       
-      }
 
         $user = User::create([
             'name'=> $request->name,
@@ -47,12 +45,8 @@ class AuthController extends Controller
       ])
     
     ], 200);
+  }
 
-    //    return response()->json([
-    //     'success'=>'True',
-    //     'message'=>'register successfull',
-    //     'token'=>$token,'user'=>$user],200);
-    }
 
     public function login(Request $request)
     {

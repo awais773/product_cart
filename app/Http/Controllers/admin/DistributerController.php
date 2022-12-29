@@ -59,4 +59,29 @@ class DistributerController extends Controller
        return redirect()->back()->with( 'message',"Record deleted successfully");
     }
 
+    public function edit($id)
+    {
+        $distributer = Distributer::find($id);
+        return view('admin.main.editDistributor',compact('distributer'));
+
+    }
+
+
+    public function update(Request $req , $id)
+    {
+      
+        $rating = Distributer::find($id);
+        $rating->name = $req->name;
+
+        if ($image = $req->file('image')) {
+            $destinationPath = 'distributorImage/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+            $rating->image=$profileImage;
+        }
+          $rating->update();
+        return redirect()->back()->with('message','Distributor update Sucessfull');
+    }
+
 }

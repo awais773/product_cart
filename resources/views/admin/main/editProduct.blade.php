@@ -53,7 +53,7 @@
                 <h3 class="h5 text-gray-800 ">Salect Distribution</h3>
                 @foreach ($distributers as $distributer)
                 <div class="form-group">
-                    <label><input type="checkbox" name="distributer_id" value="{{$distributer->id}}" <?php if($product->distributer_id==$distributer->id){echo 'checked="checked"'; }?>>{{ $distributer->name }}</label>
+                    <label><input style="margin: 0px 10px 0px 0px;" type="checkbox" name="distributer_id" value="{{$distributer->id}}" <?php if($product->distributer_id==$distributer->id){echo 'checked="checked"'; }?>>{{ $distributer->name }}</label>
                 </div> 
                 @endforeach
             </div>
@@ -76,27 +76,7 @@
                         </div>
                     </div>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwomeat" aria-expanded="true" aria-controls="collapseTwomeat">
-                        <span>MEAT</span>
-                    </a>
-                    <div id="collapseTwomeat" class="collapse inner-collap" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 rounded">
-                            <div class="form-check form-switch collapse-inner">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Amazon</label>
-                            </div>
-                            <div class="form-check form-switch collapse-inner">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Amazon</label>
-                            </div>
-                            <div class="form-check form-switch collapse-inner">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Amazon</label>
-                            </div>
-                        </div>
-                    </div>
-                </li> --}}
+             
 
             </div>
 
@@ -169,8 +149,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
     <div class="container-fluid box-salect">
 
@@ -183,6 +161,9 @@
                 <h3 class="h4 mb-4 text-gray-800">File Upload</h3>
                     <input  type="file" name="image[]" accept="image/*"  id="inputImage" 
                     multiple  name="filename[]">
+                    @foreach($product->productImage as $area)
+                    <img width="100" style="margin-bottom:9px" height="80" src="{{ asset($area->images) }}" alt="" srcset="">
+                  @endforeach
             </div>
 
         </div>

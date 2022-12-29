@@ -52,7 +52,7 @@
                 <h3 class="h5 text-gray-800 ">Salect Distribution</h3>
                 @foreach ($distributers as $distributer)
                 <div class="form-group">
-                    <label><input type="checkbox" name="distributer_id" value="{{$distributer->id}}">{{ $distributer->name }}</label>
+                    <label><input style="margin: 0px 10px 0px 0px;"type="checkbox" name="distributer_id" value="{{$distributer->id}}">{{ $distributer->name }}</label>
                 </div> 
                 @endforeach
             </div>

@@ -30,7 +30,7 @@ class ProductController extends Controller
         $distributers = Distributer::all();
         $category = Category::all();
         return view('admin.main.addproduct',compact('distributers','category'));
-    }
+}
     
     public function store(Request $req)
     {

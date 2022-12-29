@@ -56,14 +56,21 @@
                                             <tr class="even">
                                                 <td>{{$Distributers->id}}</td>
                                                 <td>{{$Distributers->name}}</td>
-                                                <td><img width="100" style="margin-bottom:9px" height="80" src="{{ asset('distributorImage/'.$Distributers->image) }}" alt="" srcset="">
+                                                <td><img width="100" style="margin-bottom:9px" height="80" src="{{ asset('distributorImage/'.$Distributers->image) }}" alt="" srcset="">   
                                                 </td>
-                                                <td>  <form method="post" action="{{url('/destroyDistributer',$Distributers->id)}}">
+                                                 <td style="display: flex">
+                                                <div style="  margin-right: 10px">    
+                                                <a class="btn btn-success" href="{{ route('distributors.edit',$Distributers->id) }}"> <i class="fas fa-edit"></i></a>
+                                            </div>
+                                            <div style="  margin-left: 10px;">
+                                                <form method="post" action="{{url('/destroyDistributer',$Distributers->id)}}">
                                                     @method('delete')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                                </form></td>
-
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                        class="far fa-trash-alt"></i></button>                                               
+                                                     </form>
+                                                    </div>
+                                                    </td>
                                             </tr>
                                             @endforeach
                                     </tbody>

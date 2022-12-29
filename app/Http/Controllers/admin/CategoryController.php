@@ -60,8 +60,6 @@ class CategoryController extends Controller
 
         
     }
-
-
   
 
     public function destroyCategory($id) 
@@ -72,9 +70,21 @@ class CategoryController extends Controller
     }
 
 
-    public function subCategory()
+    public function edit($id)
     {
-        $category = Category::latest()->get();
-        return view('admin.main.subcategory');
+        $category = Category::find($id);
+        return view('admin.main.editCategory',compact('category'));
+
+    }
+
+    public function update(Request $req ,$id)
+    {
+
+        $rating = Category::find($id);
+        $rating->name = $req->name;
+        $rating->germany_name = $req->germany_name;
+        $rating->hebrew_name = $req->hebrew_name;
+        $rating->update();
+        return redirect()->back()->with('message','Category Update Sucessfull');
     }
 }

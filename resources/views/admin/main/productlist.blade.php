@@ -78,13 +78,17 @@
                                             <td>{{$product->manufacturer  }}</td>
                                             <td>{{$product->categorys?->name  }}</td>
                                             <td style="display: flex">
+                                             <div style="  margin-right: 10px">    
                                              <a class="btn btn-success" href="{{ route('products.edit',$product->id) }}"> <i class="fas fa-edit"></i></a>
+                                            </div>     
+                                            <div style="  margin-left: 10px;">
                                                  <form method="post" action="{{url('/destroyProduct',$product->id)}}">
                                                       @method('delete')
                                                         @csrf      
                                                 <button type="submit" class="btn btn-danger"><i
                                                         class="far fa-trash-alt"></i></button>
-                                                 </form>    
+                                                 </form> 
+                                                </div>    
                                             </td>
                                         </tr>
                                         @endforeach

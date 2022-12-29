@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use DB;
 use App\Models\User;
 use App\Models\Api\Store;
 use App\Models\Api\Product;
@@ -10,7 +11,6 @@ use App\Models\Api\Faviourt;
 use Illuminate\Http\Request;
 use App\Models\Api\Distributer;
 use App\Models\Api\ProductImage;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use SebastianBergmann\CodeCoverage\Driver\Selector;
@@ -230,31 +230,29 @@ class ProductController extends Controller
     }
 
 
-    public function storeLocation(Request $request)
+    public function storeLocation(Request $request )
     {
-       
-        $long = $request->long;
-        $lat = $request->lat;
-        $circle_radius = 6371;
-        $max_distance = 20;
-        $designers = DB::select('SELECT * FROM
-        (SELECT *, (' . $circle_radius . ' * acos(cos(radians(' . $lat . ')) * cos(radians(lat)) *
-        cos(radians(`long`) - radians(' . $long . ')) +
-        sin(radians(' . $lat . ')) * sin(radians(`lat`))))
-        AS distance
-        FROM stores) AS distances 
-        ORDER BY distance;
+        $lat=$request->lat;
+        $long=$request->long;
+        $Store = Store::select(  "id" ,"name","long","lat", \DB::raw("6371 * acos(cos(radians(" . $lat . "))
+        * cos(radians(`lat`)) * cos(radians(`long`) - radians(" . $long . "))
+        + sin(radians(" .$lat. ")) * sin(radians(lat))) AS distance"))
+        ->having('distance', '<', 1000)
+        ->orderBy('distance')
+        ->get()->toArray();
+        if (is_null($Store)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'data not found'
+            ],);
+        }
+        return response()->json([
+            'success' => 'True',
+            'message' => 'All Data susccessfull',
+            'data' => $Store,
 
-    ');
-       if (is_null($designers)) {
-        return response()->json([ 'success'=>false,
-        'message'=>' Data not found', ]);        
-     } 
-        return response()->json([ 
-         'success'=>'True',
-         'message'=>'All Data susccessfull',
-          'data'=>$designers
-]);
+        ]);
+    
     }
 
 
