@@ -17,13 +17,19 @@ class AuthController extends Controller
     //
     public function register(Request $request)
     {
-      $loginData = $request->return =[
-        'email' => 'email|required|unique:users',
-        'password' => 'required'
-    ];
+      $validator = Validator::make($request->all(), [
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required',
+    ]);
 
-    if (!auth()->attempt($loginData)) {
-        return response(['message' => 'Invalid Credentials'], 401);
+    if($validator->fails()){
+            return response()->json([
+                'success'=>false,
+                // 'message' => $validator->errors()->toJson()
+                 'message'=> 'Email already exist',
+    
+            ], 400);
     }
 
 

@@ -56,8 +56,7 @@ Route::get('/adddistribution', [App\Http\Controllers\admin\DistributerController
 Route::get('/distributionlist', [App\Http\Controllers\admin\DistributerController::class, 'show']);
 Route::post('/storedistribution', [App\Http\Controllers\admin\DistributerController::class, 'store']);
 Route::delete('destroyDistributer/{id}', [App\Http\Controllers\admin\DistributerController::class, 'destroyDistributer']);
-Route::Resource('distributors
-', App\Http\Controllers\admin\DistributerController::class);
+Route::Resource('distributors', App\Http\Controllers\admin\DistributerController::class);
 
 
 

@@ -107,6 +107,11 @@
                     <input type="text" class="form-control" value="{{ $product->barcode }}" name="barcode">
                     {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
                 </div>
+                <h3 class="h4 mb-4 text-gray-800">Manufacturer</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" value="{{ $product->manufacturer }}" name="manufacturer">
+                    {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
+                </div>
             </div>
             <div class="col-6">
                 <h3 class="h4 mb-4 text-gray-800">Diet</h3>

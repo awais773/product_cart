@@ -62,6 +62,9 @@
                                                 style="width: 89.0312px;">Manufacturer Barcode</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Salary: activate to sort column ascending"
+                                                style="width: 89.0312px;">Manufacturer</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Salary: activate to sort column ascending"
                                                 style="width: 89.0312px;">User-Name</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Salary: activate to sort column ascending"
@@ -94,6 +97,7 @@
                                 <td>{{$suggestion->distributers?->name }}</td>
                                 <td>{{$suggestion->supervisor }}</td>
                                 <td>{{$suggestion->barcode }}</td>
+                                <td>{{$suggestion->manufacturer }}</td>
                                 <td>{{$suggestion->users?->name }}</td>
                                 <td>{{$suggestion->users?->email }}</td>
                                 <td>
