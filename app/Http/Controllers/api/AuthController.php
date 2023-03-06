@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\api;
 
 use App\Models\User;
-use App\Models\Api\Product;
 use Illuminate\Http\Request;
 use App\Mail\OtpVerificationMail;
 use App\Http\Controllers\Controller;
@@ -36,7 +35,6 @@ class AuthController extends Controller
         $user = User::create([
             'name'=> $request->name,
             'email'=> $request->email,
-            'country'=> $request->country,
             'password'=> Hash::make($request->password)         
         ]);
        $token = $user->createToken('Token')->accessToken;

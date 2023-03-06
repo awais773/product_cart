@@ -23,13 +23,20 @@ Route::post('/verify/otp', [App\Http\Controllers\admin\EmailInvitationController
 
 Route::post('/user/register', [App\Http\Controllers\Auth\RegisterController::class, 'registerUser'])->name('register.user');
 
+
 Auth::routes();
 
+Route::post('/change-passwords', [App\Http\Controllers\admin\EmailInvitationController::class, 'updatePassword']);
+Route::get('/change-password', [App\Http\Controllers\admin\EmailInvitationController::class, 'changePassword']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/dashboard', [App\Http\Controllers\admin\CategoryController::class, 'index']);
-Route::get('/prductlist', [App\Http\Controllers\admin\ProductController::class, 'index']);
+Route::get('/leaderboardlist', [App\Http\Controllers\admin\LeaderBoardController::class, 'index']);
+Route::get('/Today', [App\Http\Controllers\admin\LeaderBoardController::class, 'search']);
+Route::get('/WeekFilter', [App\Http\Controllers\admin\LeaderBoardController::class, 'weekFilter']);
+Route::get('/MonthFilter', [App\Http\Controllers\admin\LeaderBoardController::class, 'MonthFilter']);
+
 
 Route::get('/addprduct', [App\Http\Controllers\admin\ProductController::class, 'create']);
 Route::post('/storePrduct', [App\Http\Controllers\admin\ProductController::class, 'store']);
@@ -39,58 +46,28 @@ Route::Resource('products', App\Http\Controllers\admin\ProductController::class)
 // Route::resource('products', ProductController::class);
 // Route::get('/prductlist', [App\Http\Controllers\admin\ProductController::class, 'show']);
 
-Route::get('/addcategory', [App\Http\Controllers\admin\CategoryController::class, 'create']);
-Route::post('/storeCategory', [App\Http\Controllers\admin\CategoryController::class, 'store']);
-Route::get('/listCategory', [App\Http\Controllers\admin\CategoryController::class, 'show']);
-Route::delete('/destroyCategory/{id}', [App\Http\Controllers\admin\CategoryController::class, 'destroyCategory']);
-Route::Resource('categories', App\Http\Controllers\admin\CategoryController::class);
-
-
-Route::get('/subcategory', [App\Http\Controllers\admin\SubCategoryController::class, 'create']);
-Route::post('/storeSubcategory', [App\Http\Controllers\admin\SubCategoryController::class, 'store']);
-Route::get('/listsubCategory', [App\Http\Controllers\admin\SubCategoryController::class, 'index']);
-
-Route::get('/adddistribution', [App\Http\Controllers\admin\DistributerController::class, 'index']);
-
-Route::get('/adddistribution', [App\Http\Controllers\admin\DistributerController::class, 'create']);
-Route::get('/distributionlist', [App\Http\Controllers\admin\DistributerController::class, 'show']);
-Route::post('/storedistribution', [App\Http\Controllers\admin\DistributerController::class, 'store']);
-Route::delete('destroyDistributer/{id}', [App\Http\Controllers\admin\DistributerController::class, 'destroyDistributer']);
-Route::Resource('distributors', App\Http\Controllers\admin\DistributerController::class);
+Route::get('/addConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'create']);
+Route::post('/storeConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'store']);
+Route::get('/listConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'show']);
+Route::delete('/destroyCategory/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'destroyCategory']);
+Route::get('/dailyBouns', [App\Http\Controllers\admin\ConfigrationController::class, 'dailyBounsCreate']);
+Route::post('/adddailyBouns', [App\Http\Controllers\admin\ConfigrationController::class, 'adddailyBouns']);
+Route::get('/listDailyBouns', [App\Http\Controllers\admin\ConfigrationController::class, 'listDailyBouns']);
+Route::Resource('configrations', App\Http\Controllers\admin\ConfigrationController::class);
+Route::get('DailyBounsedit/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'DailyBounsedit']);
+Route::put('DailyBounsupdate/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'DailyBounsupdate']);
+Route::delete('/destroyDailyBouns/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'destroyDailyBouns']);
+Route::get('showAdvertising/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'showAdvertising']);
+Route::get('z/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'z']);
+Route::get('complete/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'complete']);
 
 
 
-Route::get('/changeStatus', [App\Http\Controllers\admin\SuggestionController::class, 'changeStatus']);
-Route::get('/suggestion', [App\Http\Controllers\admin\SuggestionController::class, 'index']);
-Route::get('/downloadImage', [App\Http\Controllers\admin\SuggestionController::class, 'downloadImage']);
-Route::Resource('suggestions', App\Http\Controllers\admin\SuggestionController::class);
+Route::get('/xandy', [App\Http\Controllers\admin\ConfigrationController::class, 'xandy']);
 
 
 
-Route::get('/Reported_problems', [App\Http\Controllers\admin\Reported_problemsController::class, 'index']);
-Route::delete('/destroy/{id}', [App\Http\Controllers\admin\Reported_problemsController::class, 'destroy']);
 
-Route::get('/Messages', [App\Http\Controllers\admin\MessagesController::class, 'index']);
-
-Route::get('/AddStores', [App\Http\Controllers\admin\StoresController::class, 'create']);
-Route::post('/storeAddStores', [App\Http\Controllers\admin\StoresController::class, 'store']);
-
-Route::get('/StoresList', [App\Http\Controllers\admin\StoresController::class, 'index']);
-Route::delete('/destroyStore/{id}', [App\Http\Controllers\admin\StoresController::class, 'destroyStore']);
-
-
-Route::get('/Notifications', [App\Http\Controllers\admin\NotificationsController::class, 'store']);
-
-Route::post('/storeAdvertisement', [App\Http\Controllers\admin\AdvertisementController::class, 'store']);
-Route::get('/AddAdvertisement', [App\Http\Controllers\admin\AdvertisementController::class, 'index']);
-Route::get('/AdvertisementList', [App\Http\Controllers\admin\AdvertisementController::class, 'show']);
-Route::delete('/destroy/{id}', [App\Http\Controllers\admin\AdvertisementController::class, 'destroy']);
-
-
-Route::get('/Others', [App\Http\Controllers\admin\OthersController::class, 'store']);
-Route::get('/Users', [App\Http\Controllers\admin\UsersController::class, 'index']);
-
-Route::get('user/approved/service/{id}', [App\Http\Controllers\admin\SuggestionController::class, 'approveservice'])->name('approveservice');
-Route::get('user/disable/service/{id}', [App\Http\Controllers\admin\SuggestionController::class, 'disableservice'])->name('disableservice');
+Route::get('/Users', [App\Http\Controllers\admin\UserController::class, 'index']);
 
 

@@ -11,7 +11,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Kosher DataTables</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Game DataTables</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -50,7 +50,7 @@
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
                                                 style="width: 131.172px;">Email</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            {{-- <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Age: activate to sort column ascending"
                                                 style="width: 131.172px;">Contact No</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
@@ -60,7 +60,7 @@
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1"
                                                 aria-label="Manufacturer: activate to sort column ascending"
-                                                style="width: 131.172px;">Image</th>
+                                                style="width: 131.172px;">Image</th> --}}
                                         </tr>
                                     </thead>
 
@@ -74,10 +74,10 @@
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{$user->email  }}</td>
-                                            <td>{{ $user->contact_number }}</td>
+                                            {{-- <td>{{ $user->contact_number }}</td>
                                             <td>{{ $user->country }}</td>
                                             <td><img width="100" style="margin-bottom:9px" height="80" src="{{ asset('profileImage/'.$user->avatar) }}" alt="" srcset=""></td>
-                                           
+                                            --}}
                                             
 
                                         </tr>

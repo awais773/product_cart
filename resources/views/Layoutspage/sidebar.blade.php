@@ -29,7 +29,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Kosher Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Game Admin <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -61,108 +61,47 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoCategori"
                     aria-expanded="true" aria-controls="collapseTwoCategori">
                     <i class="bi bi-menu-button-wide"></i>
-                    <span>Categories/P.Family</span>
+                    <span>Level Configration</span>
                 </a>
                 <div id="collapseTwoCategori" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Categories/Prod.Family:</h6>
-                        <a class="collapse-item" href="{{ url('/addcategory') }}">Add Categories</a>
-                        {{-- <a class="collapse-item" href="{{ url('/subcategory') }}">Sub Categories </a> --}}
-                        <a class="collapse-item" href="{{ url('/listCategory') }}">List Categories </a>
-                        {{-- <a class="collapse-item" href="{{ url('/listsubCategory') }}">List Sub Categories </a> --}}
+                        <h6 class="collapse-header">Level Configration:</h6>
+                        <a class="collapse-item" href="{{ url('/addConfigration') }}">Add Level Configration</a>
+                        <a class="collapse-item" href="{{ url('/listConfigration') }}">List Level Configration </a>
 
 
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoDistribut"
                     aria-expanded="true" aria-controls="collapseTwoDistribut">
                     <i class="bi bi-distribute-horizontal"></i>
-                    <span>Distributors</span>
+                    <span>Daily Bonus</span>
                 </a>
                 <div id="collapseTwoDistribut" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Distributors:</h6>
-                        <a class="collapse-item" href="{{ url('/adddistribution') }}">Add Distributors</a>
-                        <a class="collapse-item" href="{{ url('/distributionlist') }}">Distributors List</a>
+                        <h6 class="collapse-header">Daily Bonus:</h6>
+                        <a class="collapse-item" href="{{ url('/dailyBouns') }}">Add Daily Bonus</a>
+                        <a class="collapse-item" href="{{ url('listDailyBouns') }}">List Daily Bonus </a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
+
+            
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="bi bi-bag-check"></i>
-                    <span>Products</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Products:</h6>
-                        <a class="collapse-item" href="{{ url('/addprduct') }}">Add Products</a>
-                        <a class="collapse-item" href="{{ url('/prductlist') }}">Products List</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/suggestion') }}">
+                <a class="nav-link" href="{{ url('/leaderboardlist') }}">
                     <i class="bi bi-chat-left-dots"></i>
-                    <span>Suggestions</span></a>
+                    <span>LeaderBoard </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/Reported_problems') }}">
+                <a class="nav-link" href="{{ url('listDailyBouns') }}">
                     <i class="bi bi-bug"></i>
-                    <span>Reported Problems</span></a>
+                    <span>Daily Bonus</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/Messages') }}">
-                    <i class="bi bi-envelope"></i>
-                    <span>Messages (Contact Us)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwostore"
-                    aria-expanded="true" aria-controls="collapseTwostore">
-                    <i class="bi bi-file-plus"></i>
-                    <span>Store</span>
-                </a>
-                <div id="collapseTwostore" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Store:</h6>
-                        <a class="collapse-item" href="{{ url('/AddStores') }}">Add Store</a>
-                        <a class="collapse-item" href="{{ url('/StoresList') }}">Store List</a>
-                    </div>
-                </div>
-            </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ url('/Notifications') }}">
-                    <i class="bi bi-bell-fill"></i>
-                    <span>Notifications</span></a>
-            </li> --}}
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                    data-target="#collapseTwoadvertise" aria-expanded="true" aria-controls="collapseTwoadvertise">
-                    <i class="bi bi-badge-ad"></i>
-                    <span>Advertisement</span>
-                </a>
-                <div id="collapseTwoadvertise" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Advertisement:</h6>
-                        <a class="collapse-item" href="{{ url('/AddAdvertisement') }}">Add Advertisement</a>
-                        <a class="collapse-item" href="{{ url('/AdvertisementList') }}">Advertisement List</a>
-                    </div>
-                </div>
-            </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ url('/Others') }}">
-                    <i class="bi bi-person-plus"></i>
-                    <span>Others</span></a>
-            </li> --}}
-
 
 
             <!-- Divider -->
@@ -244,10 +183,14 @@
                                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ url('/change-password') }}">
+                                 {{ __('Profile Update') }}
+                             </a>
             
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+                            
                             </div>
                         </li>
                     </ul>

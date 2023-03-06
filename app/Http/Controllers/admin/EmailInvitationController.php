@@ -4,13 +4,14 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\User;
 use App\Models\Invitation;
-use App\Models\Api\Product;
 use App\Mail\InvitationMail;
-use App\Models\Api\Complain;
 use Illuminate\Http\Request;
-use App\Models\Api\Distributer;
 use App\Http\Controllers\Controller;
+use App\Models\Api\Configration;
+use App\Models\Api\DailyBonus;
+use App\Models\Api\LeaderBoard;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class EmailInvitationController extends Controller
@@ -26,12 +27,13 @@ class EmailInvitationController extends Controller
     public function index()
     {
         
-        $product = Product::all()->count();
+        $LeaderBoard = LeaderBoard::all()->count();
         $user = User::all()->count();
-        $complain = Complain::all()->count();
-        $distributer = Distributer::all()->count();
+        $Configration = Configration::all()->count();
+        $DailyBonus = DailyBonus::all()->count();
+
         
-        return view('admin.main.indexs',compact('product','user','complain','distributer'));
+        return view('admin.main.indexs',compact('LeaderBoard','user','Configration','DailyBonus'));
     }
 
     /**
@@ -57,4 +59,33 @@ class EmailInvitationController extends Controller
 
         return response()->json(['success' => $this->success, 'message' => $this->message]);
     }
+
+    public function changePassword()
+    {
+       return view('admin.main.change-password');
+    }
+    
+    public function updatePassword(Request $request)
+    {
+            # Validation
+            $request->validate([
+                'old_password' => 'required',
+                'new_password' => 'required|confirmed',
+            ]);
+    
+    
+            #Match The Old Password
+            if(!Hash::check($request->old_password, auth()->user()->password)){
+                return back()->with("error", "Old Password Doesn't match!");
+            }
+    
+    
+            #Update the new Password
+            User::whereId(auth()->user()->id)->update([
+                'password' => Hash::make($request->new_password)
+            ]);
+    
+            return back()->with("status", "Password changed successfully!");
+    }
+    
 }
