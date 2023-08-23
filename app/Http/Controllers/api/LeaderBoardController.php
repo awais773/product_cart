@@ -9,6 +9,9 @@ use App\Models\Api\LeaderBoard;
 use App\Models\Api\Configration;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\DailyApiBonus;
+use App\Models\Purchasing;
+use Illuminate\Support\Facades\Auth;
 
 class LeaderBoardController extends Controller
 {
@@ -131,6 +134,106 @@ class LeaderBoardController extends Controller
             'success' => 'True',
             'message' => 'All Data susccessfull',
             'data' => $data,
+        ]);
+    }
+
+
+
+    public function DailyApiBonusGet()
+    {
+        $data = DailyApiBonus::latest()->get();
+        if (is_null($data)) {
+            return response()->json([
+                'success' => 'Falls',
+                'message' =>'data not found',]);
+        }
+        return response()->json([
+            'success' => 'True',
+            'message' => 'All Data susccessfull',
+            'data' => $data,
+        ]);
+    }
+
+
+    public function DailyApiBonusCreate(Request $request)
+    {
+      $LeaderBoard = DailyApiBonus::create($request->post());
+      $LeaderBoard->save();
+
+        
+        if (is_null($LeaderBoard)) {
+            return response()->json('storage error',);
+        }
+        return response()->json([
+            'success' => 'True',
+            'message' => 'DailyBonus created successfully',
+            'data' => $LeaderBoard,
+        ]);
+    }
+
+
+    public function DailyApiBonusShow($id)
+    {
+        $program = DailyApiBonus::find($id);
+        if (is_null($program)) {
+            return response()->json([
+                'success' => 'Falls',
+                'message' =>'data not found'], 404);
+        }
+        return response()->json([
+            'success' => 'True',
+            'data' => $program,
+        ]);
+    }
+
+
+    
+    public function PurchasingGet()
+    {
+        $data = Purchasing::latest()->get();
+        if (is_null($data)) {
+            return response()->json([
+                'success' => 'Falls',
+                'message' =>'data not found',]);
+        }
+        return response()->json([
+            'success' => 'True',
+            'message' => 'All Data susccessfull',
+            'data' => $data,
+        ]);
+    }
+
+
+    public function PurchasingCreate(Request $request)
+    {
+        $user = Auth::guard('api')->user();
+      $LeaderBoard = Purchasing::create($request->post());
+      $LeaderBoard->user_id = $user->id;
+      $LeaderBoard->save();
+
+        
+        if (is_null($LeaderBoard)) {
+            return response()->json('storage error',);
+        }
+        return response()->json([
+            'success' => 'True',
+            'message' => 'Purchasing created successfully',
+            'data' => $LeaderBoard,
+        ]);
+    }
+
+
+    public function PurchasingShow($id)
+    {
+        $program = Purchasing::find($id);
+        if (is_null($program)) {
+            return response()->json([
+                'success' => 'Falls',
+                'message' =>'data not found'], 404);
+        }
+        return response()->json([
+            'success' => 'True',
+            'data' => $program,
         ]);
     }
 

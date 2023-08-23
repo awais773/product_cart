@@ -102,6 +102,16 @@
                     <i class="bi bi-bug"></i>
                     <span>Daily Bonus</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('HammerBouns') }}">
+                    <i class="bi bi-bug"></i>
+                    <span>Hammer</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('shop/1') }}">
+                    <i class="bi bi-bug"></i>
+                    <span>Shops</span></a>
+            </li>
 
 
             <!-- Divider -->

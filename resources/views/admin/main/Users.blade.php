@@ -50,6 +50,9 @@
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
                                                 style="width: 131.172px;">Email</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Office: activate to sort column ascending"
+                                                style="width: 131.172px;">Action</th>
                                             {{-- <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Age: activate to sort column ascending"
                                                 style="width: 131.172px;">Contact No</th>
@@ -67,13 +70,12 @@
                                     <tbody>
                                       
                                         @foreach ($Users as $user )
-
-                                        
                                         <tr class="even">
 
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{$user->email  }}</td>
+                                            <td>{{$user->status  }}</td>
                                             {{-- <td>{{ $user->contact_number }}</td>
                                             <td>{{ $user->country }}</td>
                                             <td><img width="100" style="margin-bottom:9px" height="80" src="{{ asset('profileImage/'.$user->avatar) }}" alt="" srcset=""></td>
@@ -87,42 +89,6 @@
                                 </table>
                             </div>
                         </div>
-                        {{-- <div class="row">
-                            <div class="col-sm-12 col-md-5">
-                                <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
-                                    Showing 1 to 10 of 57 entries</div>
-                            </div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                    <ul class="pagination pagination-end">
-                                        <li class="paginate_button page-item previous disabled"
-                                            id="dataTable_previous"><a href="#" aria-controls="dataTable"
-                                                data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                        <li class="paginate_button page-item active"><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="1" tabindex="0"
-                                                class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="2" tabindex="0"
-                                                class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="3" tabindex="0"
-                                                class="page-link">3</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="4" tabindex="0"
-                                                class="page-link">4</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="5" tabindex="0"
-                                                class="page-link">5</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="dataTable" data-dt-idx="6" tabindex="0"
-                                                class="page-link">6</a></li>
-                                        <li class="paginate_button page-item next" id="dataTable_next"><a
-                                                href="#" aria-controls="dataTable" data-dt-idx="7"
-                                                tabindex="0" class="page-link">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                     <button class="btn btn-secondary float-right export-btn"
                         onclick="exportTableToExcel('dataTable' , 'members-data');"> Export Data</button>

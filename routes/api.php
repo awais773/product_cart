@@ -37,7 +37,18 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('leaderBoards', App\Http\Controllers\api\LeaderBoardController::class);
     Route::get('/levelConfigration', [App\Http\Controllers\api\LeaderBoardController::class, 'levelConfigration']);
     Route::get('/dailyMissions', [App\Http\Controllers\api\LeaderBoardController::class, 'dailyMissions']);
+
+
+    //////
+    Route::get('/DailyApiBonusGet', [App\Http\Controllers\api\LeaderBoardController::class, 'DailyApiBonusGet']);
+    Route::post('/DailyApiBonus', [App\Http\Controllers\api\LeaderBoardController::class, 'DailyApiBonusCreate']);
+    Route::get('/DailyApiBonusGet/{id}', [App\Http\Controllers\api\LeaderBoardController::class, 'DailyApiBonusShow']);
     
+
+        //////
+        Route::get('/PurchasingGet', [App\Http\Controllers\api\LeaderBoardController::class, 'PurchasingGet']);
+        Route::post('/PurchasingCreate', [App\Http\Controllers\api\LeaderBoardController::class, 'PurchasingCreate']);
+        Route::get('/PurchasingGet/{id}', [App\Http\Controllers\api\LeaderBoardController::class, 'PurchasingShow']);
 
 
 
