@@ -53,17 +53,6 @@
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
                                                 style="width: 131.172px;">Action</th>
-                                            {{-- <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Age: activate to sort column ascending"
-                                                style="width: 131.172px;">Contact No</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1"
-                                                aria-label="Start date: activate to sort column ascending"
-                                                style="width: 131.172px;">Country</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1"
-                                                aria-label="Manufacturer: activate to sort column ascending"
-                                                style="width: 131.172px;">Image</th> --}}
                                         </tr>
                                     </thead>
 
@@ -71,11 +60,24 @@
                                       
                                         @foreach ($Users as $user )
                                         <tr class="even">
-
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{$user->email  }}</td>
-                                            <td>{{$user->status  }}</td>
+                                            <td style="display: flex">  
+                                                <a class="btn btn-success"
+                                                href="{{ url('details', $user->id) }}">
+                                                Details
+                                            </a>
+                                            <div style="  margin-left: 10px;">
+                                                <form method="post"
+                                                    action="{{ url('/destroyUser', $user->id) }}">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                            class="far fa-trash-alt"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
                                             {{-- <td>{{ $user->contact_number }}</td>
                                             <td>{{ $user->country }}</td>
                                             <td><img width="100" style="margin-bottom:9px" height="80" src="{{ asset('profileImage/'.$user->avatar) }}" alt="" srcset=""></td>

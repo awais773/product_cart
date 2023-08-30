@@ -10,7 +10,9 @@ use App\Models\Api\Configration;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\DailyApiBonus;
+use App\Models\Hammer;
 use App\Models\Purchasing;
+use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 
 class LeaderBoardController extends Controller
@@ -157,7 +159,9 @@ class LeaderBoardController extends Controller
 
     public function DailyApiBonusCreate(Request $request)
     {
+    $user = Auth::guard('api')->user();
       $LeaderBoard = DailyApiBonus::create($request->post());
+      $LeaderBoard->user_id = $user->id;
       $LeaderBoard->save();
 
         
@@ -190,7 +194,7 @@ class LeaderBoardController extends Controller
     
     public function PurchasingGet()
     {
-        $data = Purchasing::latest()->get();
+        $data = Purchasing::latest()->select('itempurchased','quantity','price','RealMoney')->get();
         if (is_null($data)) {
             return response()->json([
                 'success' => 'Falls',
@@ -225,7 +229,7 @@ class LeaderBoardController extends Controller
 
     public function PurchasingShow($id)
     {
-        $program = Purchasing::find($id);
+        $program = Purchasing::select('itempurchased','quantity','price','RealMoney')->find($id);
         if (is_null($program)) {
             return response()->json([
                 'success' => 'Falls',
@@ -236,6 +240,115 @@ class LeaderBoardController extends Controller
             'data' => $program,
         ]);
     }
+
+
+
+    public function shopGet()
+    {
+        $data = Shop::latest()->select('data')->get();
+    
+        if ($data->isEmpty()) {
+            return response()->json([
+                'success' => 'False',
+                'message' => 'Data not found',
+            ]);
+        }
+    
+        $responseData = [];
+        foreach ($data as $item) {
+            $decodedData = json_decode($item->data, true);
+    
+            if ($decodedData && isset($decodedData['Gold'], $decodedData['Items'])) {
+                $responseData[] = [
+                    'Gold' => $decodedData['Gold'],
+                    'Items' => $decodedData['Items'],
+                ];
+            }
+        }
+    
+        if (empty($responseData)) {
+            return response()->json([
+                'success' => 'False',
+                'message' => 'No valid data found in records',
+            ]);
+        }
+    
+        return response()->json([
+            'success' => 'True',
+            'message' => 'All Data successful',
+            'data' => $responseData,
+        ]);
+    }
+    
+
+
+    
+    public function ShopShow($id)
+    {
+        $program = Shop::find($id);
+        if (is_null($program)) {
+            return response()->json([
+                'success' => 'Falls',
+                'message' =>'data not found'], 404);
+        }
+        return response()->json([
+            'success' => 'True',
+            'data' => $program,
+        ]);
+    }
+
+
+
+    public function HammerGet()
+    {
+        $data = Hammer::latest()->get();
+    
+        if (is_null($data)) {
+            return response()->json([
+                'success' => 'Falls',
+                'message' => 'data not found',
+            ]);
+        }
+    
+        // Decode the JSON strings back into arrays
+        foreach ($data as $item) {
+            $item->Damage = json_decode($item->Damage);
+            $item->Gold = json_decode($item->Gold);
+            $item->Gem = json_decode($item->Gem);
+            $item->Diamond = json_decode($item->Diamond);
+        }
+    
+        return response()->json([
+            'success' => 'True',
+            'message' => 'All Data successful',
+            'data' => $data,
+        ]);
+    }
+    
+
+    public function HammerShow($id)
+    {
+        $program = Hammer::find($id);
+        
+        if (is_null($program)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data not found'
+            ], 404);
+        }
+        
+        $program->Damage = json_decode($program->Damage);
+        $program->Gold = json_decode($program->Gold);
+        $program->Gem = json_decode($program->Gem);
+        $program->Diamond = json_decode($program->Diamond);
+    
+        return response()->json([
+            'success' => true,
+            'data' => $program,
+        ]);
+    }
+    
+
 
 
 }

@@ -50,7 +50,8 @@ class HammerController extends Controller
     public function Hammerupdate(Request $request,$id)
     {
         $data = Hammer::find($id);
-        $data->update($request->all());
+        $requestData = $request->all(); // Get all the fields from the request
+        $data->update($requestData);
         return redirect()->back()->with('message','Hammer been updated successfully.');
     }
 

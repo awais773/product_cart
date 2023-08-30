@@ -84,76 +84,74 @@
             </div>
         @endif
         <!-- Page Heading -->
-        <h1 class="h2 mb-4 text-gray-800" style="border-bottom: 2px solid grey;" >Gold</h1>
-        <form action="{{ url('Shopupdate', $dailyBouns->id) }}" method="POST">
+        <!-- Gold section -->
+        <h1 class="h2 mb-4 text-gray-800" style="border-bottom: 2px solid grey;">Gold</h1>
+        <form action="{{ url('Shopupdate', ['id' => $dailyBouns->id]) }}" method="POST">
             @csrf
             @method('PUT')
+            @foreach ($data['Gold'] as $gold)
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="h4 mb-2 text-gray-800" for="GoldPackName">GoldPackName</label>
+                            <input type="text" class="form-control" value="{{ $gold['GoldPackName'] }}"
+                                name="GoldPackName[]">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="h4 mb-2 text-gray-800" for="Gold">Gold</label>
+                            <input type="number" class="form-control" value="{{ $gold['Gold'] }}" name="Gold[]">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="h4 mb-2 text-gray-800" for="price_in_diamond">Price in Diamond</label>
+                            <input type="number" class="form-control" value="{{ $gold['Price in Diamond'] }}"
+                                name="price_in_diamond[]">
+                        </div>
+                    </div>
+                </div>
+                <br>
+            @endforeach
+            <!-- ... Add more gold fields as needed ... -->
 
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="HammerName">GoldPackName </label>
-                        <input type="text" class="form-control" value="{{$dailyBouns->GoldPackName}}" name="GoldPackName"
-                          >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
+            <!-- Item section -->
+            <h1 class="h2 mb-4 text-gray-800" style="border-bottom: 2px solid grey;">Item</h1>
+            @foreach ($data['Items'] as $item)
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="h4 mb-2 text-gray-800" for="ItemName">ItemName</label>
+                            <input type="text" class="form-control" value="{{ $item['ItemName'] }}"
+                                name="ItemName[]">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="h4 mb-2 text-gray-800" for="Quantity">Quantity</label>
+                            <input type="number" class="form-control" value="{{ $item['Quantity'] }}"
+                                name="Quantity[]">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="h4 mb-2 text-gray-800" for="item_price_in_diamond">Item Price in
+                                Diamond</label>
+                            <input type="number" class="form-control" value="{{ $item['Price in Diamond'] }}"
+                                name="item_price_in_diamond[]">
+                        </div>
                     </div>
                 </div>
+                <br>
+            @endforeach
+            <!-- ... Add more item fields as needed ... -->
 
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Gold </label>
-                        <input type="text" class="form-control" value="{{$dailyBouns->Gold }}" name="Gold"
-                          >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Price in Diamond </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->price_in_diamond }}" name="price_in_diamond"
-                           >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-            </div>
-            <br>
-        <h1 class="h2 mb-4 text-gray-800" style="border-bottom: 2px solid grey;" >Item</h1>
-        <br>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">ItemName </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->ItemName }}" name="ItemName"
-                           >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="Quantity">Quantity </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->Quantity }}" name="Quantity"
-                         >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Item Price in Diamond </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->item_price_in_diamond }}" name="item_price_in_diamond"
-                         >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-            </div>
-          
             <button type="submit" class="btn btn-primary float-right export-btn btn-save-dis">Save</button>
         </form>
+
     </div>
 </div>
 
 <!-- --------End of Category--------- -->
 @include('Layoutspage.footer')
-
-
-  

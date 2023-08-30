@@ -102,7 +102,7 @@
                 <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="">Price </label>
-                        <input type="text" class="form-control" value="{{$dailyBouns->Price }}" name="Price"
+                        <input type="number" class="form-control" value="{{$dailyBouns->Price }}" name="Price"
                           >
                         {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
@@ -110,7 +110,7 @@
                 <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="">Hammer Index </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->HammerIndex }}" name="HammerIndex"
+                        <input type="number" class="form-control" value="{{ $dailyBouns->HammerIndex }}" name="HammerIndex"
                            >
                         {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
@@ -121,7 +121,7 @@
                 <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="">Strenght </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->Strenght }}" name="Strenght"
+                        <input type="number" class="form-control" value="{{ $dailyBouns->Strenght }}" name="Strenght"
                            >
                         {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
@@ -130,70 +130,103 @@
                 <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="Power">Power </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->Power }}" name="Power"
+                        <input type="number" class="form-control" value="{{ $dailyBouns->Power }}" name="Power"
                          >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Damage</label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->Damage }}" name="Damage"
-                         >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Gold </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->Gold }}" name="Gold"
-                           >
                         {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
                 </div>
 
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="Power">Gem </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->Gem }}" name="Gem"
-                         >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Diamond</label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->Diamond }}" name="Diamond"
-                          >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="">Health </label>
-                        <input type="text" class="form-control" value="{{ $dailyBouns->Health }}" name="Health" >
+                        <input type="number" class="form-control" value="{{ $dailyBouns->Health }}" name="Health" >
                         {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
                 </div>
-
+            </div>
+            <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="">IsUnlocked </label>
                         <input type="text" class="form-control" value="{{ $dailyBouns->IsUnlocked }}" name="IsUnlocked"
                            >
-                        {{-- <small value="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
+                </div>
+                {{-- <div class="col-sm">
+                    <div class="form-group">
+                        <label class="h4 mb-2 text-gray-800" for="">IsUnlocked</label>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" {{ $dailyBouns->IsUnlocked ? 'checked' : '' }} name="IsUnlocked">
+                            <label class="form-check-label" for="IsUnlocked">Unlocked</label>
+                        </div>
+                    </div>
+                </div>
+                 --}}
+                <div class="col-sm">
                 </div>
                 <div class="col-sm">
                 </div>
             </div>
+            <h1 class="h2 mb-4 text-gray-800" style="border-bottom: 2px solid grey;">Gold</h1>
+            @if ($dailyBouns->Gold)
+                <div class="row">
+                    @foreach (json_decode($dailyBouns->Gold) as $gold)
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="h4 mb-2 text-gray-800" for="Gold">Gold</label>
+                                <input type="text" class="form-control" value="{{ $gold }}" name="Gold[]">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+            
+            <h1 class="h2 mb-4 text-gray-800" style="border-bottom: 2px solid grey;">Gem</h1>
+            @if ($dailyBouns->Gem)
+                <div class="row">
+                    @foreach (json_decode($dailyBouns->Gem) as $Gem)
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="h4 mb-2 text-gray-800" for="Gem">Gem</label>
+                                <input type="text" class="form-control" value="{{ $Gem }}" name="Gem[]">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+            
+            <h1 class="h2 mb-4 text-gray-800" style="border-bottom: 2px solid grey;">Diamond</h1>
+            @if ($dailyBouns->Diamond)
+                <div class="row">
+                    @foreach (json_decode($dailyBouns->Diamond) as $Diamond)
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="h4 mb-2 text-gray-800" for="Diamond">Diamond</label>
+                                <input type="text" class="form-control" value="{{ $Diamond }}" name="Diamond[]">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+            
+            <h1 class="h2 mb-4 text-gray-800" style="border-bottom: 2px solid grey;">Damage</h1>
+            @if ($dailyBouns->Damage)
+                <div class="row">
+                    @foreach (json_decode($dailyBouns->Damage) as $Damage)
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="h4 mb-2 text-gray-800" for="Damage">Damage</label>
+                                <input type="text" class="form-control" value="{{ $Damage }}" name="Damage[]">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+            
+            <!-- Display attributes for Gem -->
           
             <button type="submit" class="btn btn-primary float-right export-btn btn-save-dis">Save</button>
+            
         </form>
     </div>
 </div>

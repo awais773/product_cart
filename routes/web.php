@@ -69,6 +69,10 @@ Route::get('/xandy', [App\Http\Controllers\admin\ConfigrationController::class, 
 
 
 Route::get('/Users', [App\Http\Controllers\admin\UserController::class, 'index']);
+Route::get('/details/{id}', [App\Http\Controllers\admin\UserController::class, 'details']);
+Route::delete('/destroyUser/{id}', [App\Http\Controllers\admin\UserController::class, 'destroyUser']);
+Route::put('/userUpdate/{id}', [App\Http\Controllers\admin\UserController::class, 'userUpdate']);
+
 
 
 Route::get('HammerBouns', [App\Http\Controllers\admin\HammerController::class, 'HammerBouns']);
@@ -77,10 +81,8 @@ Route::get('Hammere2/{id}', [App\Http\Controllers\admin\HammerController::class,
 Route::get('Hammere3/{id}', [App\Http\Controllers\admin\HammerController::class, 'Hammere3']);
 Route::put('Hammerupdate/{id}', [App\Http\Controllers\admin\HammerController::class, 'Hammerupdate']);
 
-
 Route::get('shop/{id}', [App\Http\Controllers\admin\ShopController::class, 'create']);
 Route::put('Shopupdate/{id}', [App\Http\Controllers\admin\ShopController::class, 'Shopupdate']);
-
 
 
 

@@ -24,6 +24,11 @@ Route::post('login',[App\Http\Controllers\api\AuthController::class,'login']);
 Route::get('/Users', [App\Http\Controllers\api\AuthenticateController::class, 'index']);
 Route::get('/getUsers/{id}', [App\Http\Controllers\api\AuthenticateController::class, 'show']);
 
+Route::get('/Shop', [App\Http\Controllers\api\LeaderBoardController::class, 'shopGet']);
+Route::get('/Shop/{id}', [App\Http\Controllers\api\LeaderBoardController::class, 'ShopShow']);
+Route::get('/Hammer', [App\Http\Controllers\api\LeaderBoardController::class, 'HammerGet']);
+Route::get('/Hammer/{id}', [App\Http\Controllers\api\LeaderBoardController::class, 'HammerShow']);
+
 
 
 
@@ -49,8 +54,6 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/PurchasingGet', [App\Http\Controllers\api\LeaderBoardController::class, 'PurchasingGet']);
         Route::post('/PurchasingCreate', [App\Http\Controllers\api\LeaderBoardController::class, 'PurchasingCreate']);
         Route::get('/PurchasingGet/{id}', [App\Http\Controllers\api\LeaderBoardController::class, 'PurchasingShow']);
-
-
 
 });
 

@@ -27,24 +27,73 @@ class ShopController extends Controller
         $dailyBouns = Hammer::get();
         return view('admin.main.Shop', compact('dailyBouns'));
     }
-    // public function create(){
-    //     return view('admin.main.Shop', compact('dailyBouns'));
+ 
+    // public function create($id)
+    // {
+    //     $dailyBouns = Shop::select('data')->find($id);
+    //     // $dailyBouns->data = json_decode($dailyBouns->data); // Decode the JSON-encoded location string
+    //     return view('admin.main.Shop',compact('dailyBouns'));
+
     // }
 
     public function create($id)
     {
-        $dailyBouns = Shop::find($id);
-        return view('admin.main.Shop',compact('dailyBouns'));
-
+        $dailyBouns = Shop::select('id','data')->find($id);
+        if ($dailyBouns) {
+            $data = json_decode($dailyBouns->data, true); // Decoding JSON into an associative array
+            return view('admin.main.Shop', compact('data', 'dailyBouns'));
+        }
+        
+        return abort(404); // Handle the case when the record is not found
     }
+    
+    
 
 
-    public function Shopupdate(Request $request,$id)
+
+    public function Shopupdate(Request $request, $id)
     {
-        $data = Shop::find($id);
-        $data->update($request->all());
-        return redirect()->back()->with('message','Shop been updated successfully.');
+        $request->validate([
+            'GoldPackName' => 'required|array',
+            'Gold' => 'required|array',
+            'price_in_diamond' => 'required|array',
+            'ItemName' => 'required|array',
+            'Quantity' => 'required|array',
+            'item_price_in_diamond' => 'required|array',
+        ]);
+    
+        $goldData = [];
+        for ($i = 0; $i < count($request->GoldPackName); $i++) {
+            $goldData[] = [
+                'GoldPackName' => $request->GoldPackName[$i],
+                'Gold' => $request->Gold[$i],
+                'Price in Diamond' => $request->price_in_diamond[$i],
+            ];
+        }
+    
+        $itemData = [];
+        for ($i = 0; $i < count($request->ItemName); $i++) {
+            $itemData[] = [
+                'ItemName' => $request->ItemName[$i],
+                'Quantity' => $request->Quantity[$i],
+                'Price in Diamond' => $request->item_price_in_diamond[$i],
+            ];
+        }
+    
+        $data = [
+            'Gold' => $goldData,
+            'Items' => $itemData,
+        ];
+    
+        $dailyBonus = Shop::find($id);
+    if (!$dailyBonus) {
+        return abort(404); // Handle the case when the record is not found
     }
+    $dailyBonus->data = json_encode($data);
+    $dailyBonus->save();
+            return redirect()->back()->with('message', 'Data updated successfully.');
+    }
+    
 
 
 
