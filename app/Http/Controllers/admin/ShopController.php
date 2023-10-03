@@ -60,6 +60,8 @@ class ShopController extends Controller
             'ItemName' => 'required|array',
             'Quantity' => 'required|array',
             'item_price_in_diamond' => 'required|array',
+            'price_in_gold' => 'required|array',
+            'price_in_energy' => 'required|array',
         ]);
     
         $goldData = [];
@@ -77,6 +79,8 @@ class ShopController extends Controller
                 'ItemName' => $request->ItemName[$i],
                 'Quantity' => $request->Quantity[$i],
                 'Price in Diamond' => $request->item_price_in_diamond[$i],
+                'Price in Energy' => $request->price_in_energy[$i],
+                'Price in Gold' => $request->price_in_gold[$i],
             ];
         }
     

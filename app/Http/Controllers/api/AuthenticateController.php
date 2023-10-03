@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
-use App\Mail\OtpVerificationMail;
-use App\Models\Api\Product;
+use Hash;
 use App\Models\User;
+use App\Models\Api\Product;
 use Illuminate\Http\Request;
+use App\Mail\OtpVerificationMail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class AuthenticateController extends Controller
@@ -81,6 +81,17 @@ class AuthenticateController extends Controller
             if (!empty($request->input('country'))) {
                 $obj->country = $request->input('country');
             }
+            
+            if (!empty($request->input('Gold'))) {
+                $obj->Gold = $request->input('Gold');
+            }
+            if (!empty($request->input('Diamonds'))) {
+                $obj->Diamonds = $request->input('Diamonds');
+            } 
+            if (!empty($request->input('Energy'))) {
+                $obj->Energy = $request->input('Energy');
+            } 
+            
             if ($obj->save()) {
                 $this->data = $obj;
                 $this->success = True;

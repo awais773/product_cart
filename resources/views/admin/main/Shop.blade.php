@@ -142,6 +142,22 @@
                                 name="item_price_in_diamond[]">
                         </div>
                     </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="h4 mb-2 text-gray-800" for="price_in_gold">Price in Gold
+                                </label>
+                            <input type="number" class="form-control" value="{{ $item['Price in Gold'] }}"
+                                name="price_in_gold[]">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label class="h4 mb-2 text-gray-800" for="price_in_energy">Price in Energy
+                                </label>
+                            <input type="number" class="form-control" value="{{ $item['Price in Energy'] }}"
+                                name="price_in_energy[]">
+                        </div>
+                    </div>
                 </div>
                 <br>
             @endforeach
