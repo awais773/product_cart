@@ -21,14 +21,6 @@ Route::post('login',[App\Http\Controllers\api\AuthController::class,'login']);
 // Route::post('/forgotPassword', [App\Http\Controllers\api\AuthenticateController::class, 'forgotPassword']);
 // Route::post('/updatePassword', [App\Http\Controllers\api\AuthenticateController::class, 'updatePassword']);
 
-Route::get('/Users', [App\Http\Controllers\api\AuthenticateController::class, 'index']);
-Route::get('/getUsers/{id}', [App\Http\Controllers\api\AuthenticateController::class, 'show']);
-
-Route::get('/Shop', [App\Http\Controllers\api\LeaderBoardController::class, 'shopGet']);
-Route::get('/Shop/{id}', [App\Http\Controllers\api\LeaderBoardController::class, 'ShopShow']);
-Route::get('/Hammer', [App\Http\Controllers\api\LeaderBoardController::class, 'HammerGet']);
-Route::get('/Hammer/{id}', [App\Http\Controllers\api\LeaderBoardController::class, 'HammerShow']);
-
 
 
 
