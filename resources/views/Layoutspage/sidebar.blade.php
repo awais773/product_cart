@@ -29,7 +29,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Game Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Product Admin <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -51,67 +51,36 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ url('/Users') }}">
                     <i class="bi bi-people"></i>
                     <span>Users</span></a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoCategori"
                     aria-expanded="true" aria-controls="collapseTwoCategori">
                     <i class="bi bi-menu-button-wide"></i>
-                    <span>Level Configration</span>
+                    <span>Product</span>
                 </a>
                 <div id="collapseTwoCategori" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Level Configration:</h6>
-                        <a class="collapse-item" href="{{ url('/addConfigration') }}">Add Level Configration</a>
-                        <a class="collapse-item" href="{{ url('/listConfigration') }}">List Level Configration </a>
+                        <h6 class="collapse-header">Add Product:</h6>
+                        <a class="collapse-item" href="{{ url('/addConfigration') }}">Add Product</a>
+                        <a class="collapse-item" href="{{ url('/listConfigration') }}">List Product </a>
 
 
                     </div>
                 </div>
             </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoDistribut"
-                    aria-expanded="true" aria-controls="collapseTwoDistribut">
-                    <i class="bi bi-distribute-horizontal"></i>
-                    <span>Daily Bonus</span>
-                </a>
-                <div id="collapseTwoDistribut" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Daily Bonus:</h6>
-                        <a class="collapse-item" href="{{ url('/dailyBouns') }}">Add Daily Bonus</a>
-                        <a class="collapse-item" href="{{ url('listDailyBouns') }}">List Daily Bonus </a>
-                    </div>
-                </div>
-            </li> --}}
-
             
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ url('/leaderboardlist') }}">
                     <i class="bi bi-chat-left-dots"></i>
                     <span>LeaderBoard </span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('listDailyBouns') }}">
-                    <i class="bi bi-bug"></i>
-                    <span>Daily Bonus</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('HammerBouns') }}">
-                    <i class="bi bi-bug"></i>
-                    <span>Hammer</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('shop/1') }}">
-                    <i class="bi bi-bug"></i>
-                    <span>Shops</span></a>
-            </li>
+            </li> --}}
 
 
             <!-- Divider -->
@@ -207,23 +176,3 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
-
-                {{-- <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false" v-pre style="float: right;">
-                        {{ Auth::user()->name }}
-                    </a>
-    
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-    
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li> --}}
