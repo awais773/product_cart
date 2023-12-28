@@ -34,11 +34,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/dashboard', [App\Http\Controllers\admin\CategoryController::class, 'index']);
 // Route::get('/prductlist', [App\Http\Controllers\admin\ProductController::class, 'show']);
 
-Route::get('/addConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'create']);
-Route::post('/storeConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'store']);
-Route::get('/listConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'show']);
+Route::get('/addProduct', [App\Http\Controllers\admin\ConfigrationController::class, 'create']);
+Route::post('/storeProduct', [App\Http\Controllers\admin\ConfigrationController::class, 'store']);
+Route::get('/product', [App\Http\Controllers\admin\ConfigrationController::class, 'show']);
 Route::delete('/destroyCategory/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'destroyCategory']);
-Route::Resource('configrations', App\Http\Controllers\admin\ConfigrationController::class);
+Route::Resource('product', App\Http\Controllers\admin\ConfigrationController::class);
 
 
 

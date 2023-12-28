@@ -84,29 +84,32 @@
         @endif
         <!-- Page Heading -->
         <h1 class="h2 mb-4 text-gray-800">Edit Configration</h1>
-        <form action="{{ route('configrations.update', $category->id) }}" method="POST">
+        <form action="{{ route('product.update', $category->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Animals </label>
-                        <input type="text" class="form-control" value="{{ $category->animal_length }}" name="animal_length">
+                        <label class="h4 mb-2 text-gray-800" for="animal_length">Title </label>
+                        <input type="text" class="form-control" value="{{$category->title }}" name="title"
+                            placeholder="title Name">
                         {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
                 </div>
 
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Hitpoints </label>
-                        <input type="text" class="form-control" value="{{ $category->hitpoints }}" name="hitpoints">
+                        <label class="h4 mb-2 text-gray-800" for="">Price </label>
+                        <input type="number" class="form-control" value="{{ $category->price }}" name="price"
+                            placeholder="price Name">
                         {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
                 </div>
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Max Timer </label>
-                        <input type="text" class="form-control" value="{{ $category->max_timer }}" name="max_timer">
+                        <label class="h4 mb-2 text-gray-800" for="">Category </label>
+                        <input type="text" class="form-control" value="{{ $category->category }}" name="category"
+                            placeholder="category Name">
                         {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
                 </div>
@@ -115,236 +118,8 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Animals Visible </label>
-                        <input type="text" class="form-control" value="{{ $category->animal_visibility }}" name="animal_visibility">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Animals Shown </label>
-                        <input type="text" class="form-control" value="{{ $category->animal_shown }}" name="animal_shown">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">TBA </label>
-                        <input type="text" class="form-control" value="{{ $category->tba1 }}" name="tba1">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">TBA2 </label>
-                        <input type="text" class="form-control" value="{{ $category->tba2 }}" name="tba2">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="total_animal">Total Animal </label>
-                        <input type="text" class="form-control" value="{{ $category->total_animal }}"
-                         id="total_animal"   name="total_animal">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">level no </label>
-                        <input type="text" class="form-control" value="{{ $category->level_no }}" name="level_no">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-            </div>
-
-            <br>
-            <br>
-            <h1 class="h2 mb-4 text-gray-800">Costs :</h1>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">AP1 </label>
-                        <input type="text" class="form-control" value="{{ $category->ap1 }}" name="ap1">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">AP2 </label>
-                        <input type="text" class="form-control" value="{{ $category->ap2 }}" name="ap2">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">G1 </label>
-                        <input type="text" class="form-control" value="{{ $category->g1 }}" name="g1">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">G2</label>
-                        <input type="text" class="form-control" value="{{ $category->g2 }}" name="g2">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">D1 </label>
-                        <input type="text" class="form-control" value="{{ $category->d1 }}" name="d1">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">D2 </label>
-                        <input type="text" class="form-control" value="{{ $category->d2 }}" name="d2">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">E1 </label>
-                        <input type="text" class="form-control" value="{{ $category->e1 }}" name="e1">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">E2 </label>
-                        <input type="text" class="form-control" value="{{ $category->e2 }}" name="e2">
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <h1 class="h2 mb-4 text-gray-800">Animals Information :</h1>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Mouse </label>
-                        <input type="text" class="form-control" value="{{ $category->mouse }}" name="mouse">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Bat </label>
-                        <input type="text" class="form-control" value="{{ $category->bat }}" name="bat">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Rooster </label>
-                        <input type="text" class="form-control" value="{{ $category->rooster }}" name="rooster">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Dog</label>
-                        <input type="text" class="form-control" value="{{ $category->dog }}" name="dog">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Crab </label>
-                        <input type="text" class="form-control" value="{{ $category->crab }}" name="crab">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Snake </label>
-                        <input type="text" class="form-control" value="{{ $category->snake }}" name="snake">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Wolf </label>
-                        <input type="text" class="form-control" value="{{ $category->wolf }}" name="wolf">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Rhino </label>
-                        <input type="text" class="form-control" value="{{ $category->rhino }}" name="rhino">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Crocodile </label>
-                        <input type="text" class="form-control" value="{{ $category->crocodile }}" name="crocodile">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Bear </label>
-                        <input type="text" class="form-control" value="{{ $category->bear }}" name="bear">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-            </div>
-
-            <br>
-            <br>
-            <h1 class="h2 mb-4 text-gray-800">Rewards: </h1>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">XS1 </label>
-                        <input type="text" class="form-control" value="{{ $category->xs1 }}"name="xs1">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">XS2 </label>
-                        <input type="text" class="form-control" value="{{ $category->xs2 }}" name="xs2">
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Level Configuration: </label>
-                        <select id="level_configation" name="level_configation"  class="select2 form-control">
-                            <option <?php if($category->level_configation==='Wood 1'){ echo 'selected';}?>>Wood 1</option>
-                            <option <?php if($category->level_configation==='Wood 2'){ echo 'selected';}?>>Wood 2</option>
-                            <option <?php if($category->level_configation==='Wood 3'){ echo 'selected';}?>>Wood 3</option>
-                            <option <?php if($category->level_configation==='Iron 1'){ echo 'selected';}?>>Iron 1</option>
-                            <option <?php if($category->level_configation==='Iron 2'){ echo 'selected';}?>>Iron 2</option>
-                            <option <?php if($category->level_configation==='Iron 3'){ echo 'selected';}?>>Iron 3</option>
-
-                        </select>
+                        <label class="h4 mb-2 text-gray-800" for="">Imgae </label>
+                        <input type="file" name="image" accept="image/*" id="image">
                     </div>
                 </div>
 
@@ -352,47 +127,6 @@
                     
                 </div>
                 <div class="col-sm">
-                    
-                </div>
-                <div class="col-sm">
-                  
-                </div>
-            </div>
-            <br>
-
-            <h1 class="h2 mb-4 text-gray-800">Probability List: </h1>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <div id="probability_container">
-                            <!-- Probability fields will be added here -->
-                            @if ($category->probability && isset($category->probability['data']))
-                              @foreach($category->probability['data'] as $key => $probability)
-                                <label for="probability_{{ $key + 1 }}">Probability {{ $key + 1 }}</label>
-                                <input type="text" class="form-control" name="probability[data][]" id="probability_{{ $key + 1 }}" value="{{ $probability }}" required>
-                              @endforeach
-                            @endif
-                          </div>
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
-                </div>
-
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                   
-                </div>
-                <div class="col-sm">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Note </label>
-                        <textarea type="text" class="form-control" value="{{ $category->note }}" name="note"> </textarea>
-                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
-                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary float-right export-btn btn-save-dis">Update</button>

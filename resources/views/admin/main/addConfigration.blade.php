@@ -85,7 +85,7 @@
         @endif
         <!-- Page Heading -->
         <h1 class="h2 mb-4 text-gray-800">Add Product</h1>
-        <form action="{{ url('/storeConfigration') }}" method="POST">
+        <form action="{{ url('/storeProduct') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-sm">
@@ -119,8 +119,7 @@
                 <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="">Imgae </label>
-                        <input type="file" class="form-control" id="image" name="image"
-                            placeholder="Max Timer Name">
+                        <input type="file" name="image" accept="image/*" id="image">
                     </div>
                 </div>
 
