@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,6 @@ Route::get('/details/{id}', [App\Http\Controllers\admin\UserController::class, '
 Route::delete('/destroyUser/{id}', [App\Http\Controllers\admin\UserController::class, 'destroyUser']);
 Route::put('/userUpdate/{id}', [App\Http\Controllers\admin\UserController::class, 'userUpdate']);
 
-
-
-
+// New code
+// Route::get('', [ProductController::class, 'index']);
+Route::get('index', [ProductController::class, "index"]);
