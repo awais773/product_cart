@@ -67,8 +67,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Add Product:</h6>
-                        <a class="collapse-item" href="{{ url('/addConfigration') }}">Add Product</a>
-                        <a class="collapse-item" href="{{ url('/listConfigration') }}">List Product </a>
+                        <a class="collapse-item" href="{{ url('/addProduct') }}">Add Product</a>
+                        <a class="collapse-item" href="{{ url('/product') }}">List Product </a>
 
 
                     </div>
