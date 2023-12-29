@@ -27,6 +27,8 @@ Route::post('login',[App\Http\Controllers\api\AuthController::class,'login']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/adddd', [App\Http\Controllers\admin\ConfigrationController::class, 'addCareGiverFeedback']);
+
 
 
 Route::middleware('auth:api')->group(function () {

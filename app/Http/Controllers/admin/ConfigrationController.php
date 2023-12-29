@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ConfigrationController extends Controller
@@ -30,62 +31,41 @@ class ConfigrationController extends Controller
 
     
 
-    // public function store(Request $req)
-    // {
-    //     $validator = Validator::make($req->all(), [
-    //         // 'title' => 'required|unique:products', // Example validation rule for the title field
-    //         // Add more validation rules as needed for other fields
-    //     ]);
-    
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => $validator->errors()->toJson(),
-    //         ], 400);
-    //     }
-    
-    //     if ($file = $req->file('image')) {
-    //         $image_name = md5(rand(1000, 10000));
-    //         $ext = strtolower($file->getClientOriginalExtension());
-    //         $image_full_name = $image_name . '.' . $ext;
-    //         $upload_path = 'images/';
-    //         $image_url = $upload_path . $image_full_name;
-    //         $file->move($upload_path, $image_full_name);
-    
-    //         $Video = new Product();
-    //         $Video->image = $image_url;
-    //         $Video->price = $req->price;
-    //         $Video->title = $req->title;
-    //         $Video->category = $req->category;
-    //         $Video->save();
-    //     }
-
-    //     return redirect()->back()->with('message', 'Product has been created successfully.');
-    // }
-    
-
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        $request->validate([
-            'title' => 'required',
-            'category' => 'required',
-            'price' => 'required',
-            'image' => 'required', // Add image validation rules
+        $validator = Validator::make($req->all(), [
+            // 'title' => 'required|unique:products', // Example validation rule for the title field
+            // Add more validation rules as needed for other fields
         ]);
     
-        $input = $request->all();
-    
-        if ($image = $request->file('image')) {
-            $destinationPath = base_path('public/image/');
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = $profileImage;
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors()->toJson(),
+            ], 400);
         }
     
-        Product::create($input);
+        if ($file = $req->file('image')) {
+            $image_name = md5(rand(1000, 10000));
+            $ext = strtolower($file->getClientOriginalExtension());
+            $image_full_name = $image_name . '.' . $ext;
+            $upload_path = 'images/';
+            $image_url = $upload_path . $image_full_name;
+            $file->move($upload_path, $image_full_name);
     
+            $Video = new Product();
+            $Video->image = $image_url;
+            $Video->price = $req->price;
+            $Video->title = $req->title;
+            $Video->category = $req->category;
+            $Video->save();
+        }
+
         return redirect()->back()->with('message', 'Product has been created successfully.');
     }
+    
+
+  
     
 
     public function show()
@@ -112,21 +92,31 @@ class ConfigrationController extends Controller
     }
 
 
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $data = Product::find($id);
-        $data->update($request->all());
+    
+        // Check if a new image is provided
         if ($file = $request->file('image')) {
             $video_name = md5(rand(1000, 10000));
             $ext = strtolower($file->getClientOriginalExtension());
             $video_full_name = $video_name . '.' . $ext;
-            $upload_path = 'image/';
+            $upload_path = 'images/';
             $video_url = $upload_path . $video_full_name;
-            $file->move($upload_path, $video_url);
+            
+            // Move the new image to the specified path
+            $file->move($upload_path, $video_full_name);
+    
+            // Update the product's image field
             $data->image = $video_url;
         }
-        return redirect()->back()->with('message','Product been updated successfully.');
+    
+        // Update other fields of the product
+        $data->update($request->all());
+    
+        return redirect()->back()->with('message', 'Product has been updated successfully.');
     }
+    
 
    
 

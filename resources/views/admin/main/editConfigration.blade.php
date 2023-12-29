@@ -84,7 +84,7 @@
         @endif
         <!-- Page Heading -->
         <h1 class="h2 mb-4 text-gray-800">Edit Configration</h1>
-        <form action="{{ route('product.update', $category->id) }}" method="POST">
+        <form action="{{ route('product.update', $category->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -118,7 +118,7 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="">Imgae </label>
+                        <label class="h4 mb-2 text-gray-800" for="">image </label>
                         <input type="file" name="image" accept="image/*" id="image">
                     </div>
                 </div>

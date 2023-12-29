@@ -3,7 +3,7 @@
    <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Game &copy; 2023</span>
+            <span>Product &copy; 2023</span>
         </div>
     </div>
 </footer>

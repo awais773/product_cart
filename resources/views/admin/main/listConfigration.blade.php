@@ -5,12 +5,12 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Configration List</h1>
+        <h1 class="h3 mb-2 text-gray-800">Product List</h1>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Game DataTables</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Product DataTables</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -30,9 +30,9 @@
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 25px;"> Title</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 106.203px;">Price</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Age: activate to sort column ascending"
+                                                style="width: 45.5156px;">price</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Age: activate to sort column ascending"
                                                 style="width: 45.5156px;">Category</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
@@ -50,14 +50,9 @@
                                             <tr class="even">
                                                 <td>{{ $categorys->id }}</td>
                                                 <td>{{ $categorys->title }}</td>
-                                                {{-- <td>
-                                            @if (isset($categorys->animal_length) && is_array($categorys->animal_length))
-                                           {{ implode(',', $categorys->animal_length) }}
-                                           @endif
-                                           </td>                                             --}}
                                                 <td>{{ $categorys->price }}</td>
                                                 <td>{{ $categorys->category }}</td>
-                                                <td><img width="100" style="margin-bottom:9px" height="80" src="{{ asset('image/' . $categorys->image) }}" alt="Product Image" srcset="">
+                                                <td><img width="100" style="margin-bottom:9px" height="80" src="{{ asset('/' . $categorys->image) }}" alt="Product Image" srcset="">
                                                 </td>
                                                 <td style="display: flex">
                                                     <div style="  margin-right: 10px">
