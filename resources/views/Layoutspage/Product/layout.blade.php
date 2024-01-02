@@ -1385,7 +1385,9 @@
 
         .wp-element-button,
         .wp-block-button__link {
-            background-color: var(--wp--preset--color--primary);
+            /* background-color: var(--wp--preset--color--primary); */
+            background-color:  rgba(25, 48, 40, 1);
+
             border-radius: 26px;
             border-width: 0;
             color: var(--wp--preset--color--base);
@@ -2226,4 +2228,3 @@
 </head>
 
 <body
-   
