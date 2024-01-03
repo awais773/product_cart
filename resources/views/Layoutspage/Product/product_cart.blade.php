@@ -1,4 +1,4 @@
-@include('Layoutspage.product.layout')
+@include('Layoutspage.Product.layout')
 
 <!-- Google Tag Manager (noscript) -->
 

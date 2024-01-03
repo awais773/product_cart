@@ -4,9 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Services\ReepayService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+
 
 class ConfigrationController extends Controller
 {
@@ -16,11 +18,39 @@ class ConfigrationController extends Controller
     //     $category = Product::latest()->get();
     //     return view('admin.main.index');
     // }
-    public function index()
+
+    private $reepayService;
+
+    public function __construct(ReepayService $reepayService)
     {
-        $category = Product::latest()->get();
-        return view('admin.main.listConfigration',compact('category'));
+        $this->reepayService = $reepayService;
     }
+
+    public function createReepayPayment(Request $request)
+    {
+        // Validate the request and get necessary data
+        $requestData = $request->validate([
+            'amount' => 'required|numeric',
+            'currency' => 'required|string',
+            // Add more validation rules as needed
+        ]);
+
+        // Make API call to Reepay to create a payment
+        $reepayData = $this->reepayService->createPayment($requestData);
+
+        // Check if the 'success' key exists in the $reepayData array
+        if (array_key_exists('success', $reepayData) && $reepayData['success']) {
+            // Return relevant data to the frontend
+            return response()->json(['success' => true, 'data' => $reepayData['data']]);
+        } else {
+            // If 'success' key is not present or its value is false, handle the error
+            $errorMessage = isset($reepayData['error']) ? $reepayData['error'] : 'Unknown error';
+            return response()->json(['success' => false, 'error' => $errorMessage], 500);
+        }
+    }
+    
+    
+ 
 
 
     public function create()

@@ -41,6 +41,7 @@ Route::get('/product', [App\Http\Controllers\admin\ConfigrationController::class
 Route::delete('/destroyCategory/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'destroyCategory']);
 Route::Resource('product', App\Http\Controllers\admin\ConfigrationController::class);
 
+Route::post('/storePayments', [App\Http\Controllers\admin\ConfigrationController::class, 'createReepayPayment']);
 
 
 

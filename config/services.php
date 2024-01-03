@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'reepay' => [
+        'public_key' => env('REEPAY_PUBLIC_KEY'),
+        'private_key' => env('REEPAY_PRIVATE_KEY'),
+    ],
+    
+
 ];

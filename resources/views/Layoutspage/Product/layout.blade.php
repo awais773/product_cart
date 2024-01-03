@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <!-- Add this in the head of your HTML -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
@@ -54,7 +55,7 @@
     <!-- / Yoast SEO plugin. -->
 
 
-    <title>Color sample | Acoustic panel / Strip ceiling - WoodUpp</title>
+    <title>Product</title>
     <link rel="dns-prefetch" href="//widget.trustpilot.com">
     <link rel="alternate" type="application/rss+xml" title="WoodUp » Feed" href="https://woodupp.dk/feed/">
     <style id="bowe-blocks-icon-text-style-inline-css">

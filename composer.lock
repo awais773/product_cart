@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ce9a4460763191b4c82ae47dea48615",
+    "content-hash": "d209be21e78dc68e5bb737955fea5ebe",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6180,7 +6180,6 @@
         },
         {
             "name": "symfony/translation-contracts",
-
             "version": "v3.4.0",
             "source": {
                 "type": "git",
@@ -6239,7 +6238,6 @@
                 "standards"
             ],
             "support": {
-
                 "source": "https://github.com/symfony/translation-contracts/tree/v3.4.0"
             },
             "funding": [
@@ -6256,7 +6254,6 @@
                     "type": "tidelift"
                 }
             ],
-
             "time": "2023-07-25T15:08:44+00:00"
         },
         {
